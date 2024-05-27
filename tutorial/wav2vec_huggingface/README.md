@@ -14,7 +14,7 @@ Install Pytorch and Tensorflow.
 
 
 `conda install pytorch torchvision torchaudio torchdata -c pytorch`
-
+\
 `conda install tensorflow`
 
 Install HuggingFace Transformers.
