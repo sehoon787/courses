@@ -13,7 +13,8 @@ Activate the Conda environment created just ago.
 Install Pytorch and Tensorflow.
 
 
-`conda install pytorch torchvision torchaudio -c pytorch`
+`conda install pytorch torchvision torchaudio torchdata -c pytorch`
+
 `conda install tensorflow`
 
 Install HuggingFace Transformers.
