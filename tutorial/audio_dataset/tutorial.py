@@ -8,6 +8,7 @@ from transformers import AutoProcessor
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Union
 
+import evaluate
 import torch
 import numpy as np
 
@@ -19,6 +20,8 @@ dataset = load_dataset("PolyAI/minds14", name="en-US", split="train[:100]")
 dataset = dataset.train_test_split(test_size=0.2)
 dataset = dataset.remove_columns(
     ["english_transcription", "intent_class", "lang_id"])
+
+wer = evaluate.load("wer")
 
 def compute_metrics(pred):
     pred_logits = pred.predictions
