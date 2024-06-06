@@ -2,6 +2,7 @@
 
 # Refer to https://huggingface.co/docs/transformers/en/tasks/asr
 
+from transformers import AutoModelForCTC, TrainingArguments, Trainer
 from datasets import load_dataset, Audio
 from transformers import AutoProcessor
 from dataclasses import dataclass, field
@@ -73,9 +74,13 @@ dataset = dataset.map(uppercase)
 dataset = dataset.map(prepare_dataset,
                       remove_columns=dataset.column_names["train"],
                       num_proc=4)
-dataset = dataset.map(lambda inputs: DataCollatorCTCWithPadding
-                      remove_columns=dataset.column_names["train"],
-                      num_proc=4)
+
+
+model = AutoModelForCTC.from_pretrained(
+    "facebook/wav2vec2-base",
+    ctc_loss_reduction="mean",
+    pad_token_id=processor.tokenizer.pad_token_id)
+
 
 #import pdb;
 #pdb.set_trace()
@@ -110,10 +115,12 @@ training_args = TrainingArguments(
 trainer = Trainer(
     model=model,
     args=training_args,
-    train_dataset=encoded_minds["train"],
-    eval_dataset=encoded_minds["test"],
+    train_dataset=dataset["train"],
+    eval_dataset=dataset["test"],
     tokenizer=processor,
     data_collator=data_collator,
     compute_metrics=compute_metrics,
 )
+
+trainer.train()
 
