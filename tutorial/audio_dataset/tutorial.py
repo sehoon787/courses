@@ -21,7 +21,6 @@ dataset = dataset.train_test_split(test_size=0.2)
 dataset = dataset.remove_columns(
     ["english_transcription", "intent_class", "lang_id"])
 
-wer = evaluate.load("wer")
 
 def compute_metrics(pred):
     pred_logits = pred.predictions
@@ -32,6 +31,7 @@ def compute_metrics(pred):
     pred_str = processor.batch_decode(pred_ids)
     label_str = processor.batch_decode(pred.label_ids, group_tokens=False)
 
+    wer = evaluate.load("wer")
     wer = wer.compute(predictions=pred_str, references=label_str)
 
     return {"wer": wer}
@@ -92,13 +92,13 @@ dataset = dataset.map(prepare_dataset,
                       remove_columns=dataset.column_names["train"],
                       num_proc=4)
 
-data_collator = DataCollatorCTCWithPadding(processor=processor, padding="longest")
+data_collator = DataCollatorCTCWithPadding(processor=processor,
+                                           padding="longest")
 
 model = AutoModelForCTC.from_pretrained(
     "facebook/wav2vec2-base",
     ctc_loss_reduction="mean",
     pad_token_id=processor.tokenizer.pad_token_id)
-
 
 #import pdb;
 #pdb.set_trace()
@@ -107,7 +107,6 @@ model = AutoModelForCTC.from_pretrained(
 #    print(data)
 #    print(data.keys())
 #    break
-
 
 training_args = TrainingArguments(
     output_dir="my_awesome_asr_mind_model",
@@ -141,4 +140,3 @@ trainer = Trainer(
 )
 
 trainer.train()
-
