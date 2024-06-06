@@ -25,9 +25,6 @@ Note that torchdata is added.
 \
 `conda install tensorflow`
 
-
-
-
 Install HuggingFace Transformers.
 
 `conda install conda-forge::transformers`
@@ -40,7 +37,7 @@ SoundFile installation
 `pip install soundfile`
 
 Librosa installtion
-`conda install librosa`
+`conda install -c conda-forge librosa`
 
 Reference:
 https://huggingface.co/docs/datasets/v1.11.0/installation.html
