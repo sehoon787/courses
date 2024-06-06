@@ -9,6 +9,7 @@ from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Union
 
 import torch
+import numpy as np
 
 processor = AutoProcessor.from_pretrained("facebook/wav2vec2-base")
 
@@ -18,6 +19,19 @@ dataset = load_dataset("PolyAI/minds14", name="en-US", split="train[:100]")
 dataset = dataset.train_test_split(test_size=0.2)
 dataset = dataset.remove_columns(
     ["english_transcription", "intent_class", "lang_id"])
+
+def compute_metrics(pred):
+    pred_logits = pred.predictions
+    pred_ids = np.argmax(pred_logits, axis=-1)
+
+    pred.label_ids[pred.label_ids == -100] = processor.tokenizer.pad_token_id
+
+    pred_str = processor.batch_decode(pred_ids)
+    label_str = processor.batch_decode(pred.label_ids, group_tokens=False)
+
+    wer = wer.compute(predictions=pred_str, references=label_str)
+
+    return {"wer": wer}
 
 
 def prepare_dataset(batch):
@@ -75,6 +89,7 @@ dataset = dataset.map(prepare_dataset,
                       remove_columns=dataset.column_names["train"],
                       num_proc=4)
 
+data_collator = DataCollatorCTCWithPadding(processor=processor, padding="longest")
 
 model = AutoModelForCTC.from_pretrained(
     "facebook/wav2vec2-base",
@@ -109,7 +124,7 @@ training_args = TrainingArguments(
     load_best_model_at_end=True,
     metric_for_best_model="wer",
     greater_is_better=False,
-    push_to_hub=True,
+    push_to_hub=False,
 )
 
 trainer = Trainer(
