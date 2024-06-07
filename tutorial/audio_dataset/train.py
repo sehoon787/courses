@@ -21,7 +21,6 @@ dataset = dataset.train_test_split(test_size=0.2)
 dataset = dataset.remove_columns(
     ["english_transcription", "intent_class", "lang_id"])
 
-wer = evaluate.load("wer")
 
 def compute_metrics(pred):
     pred_logits = pred.predictions
@@ -32,6 +31,7 @@ def compute_metrics(pred):
     pred_str = processor.batch_decode(pred_ids)
     label_str = processor.batch_decode(pred.label_ids, group_tokens=False)
 
+    wer = evaluate.load("wer")
     wer = wer.compute(predictions=pred_str, references=label_str)
 
     return {"wer": wer}
@@ -92,13 +92,13 @@ dataset = dataset.map(prepare_dataset,
                       remove_columns=dataset.column_names["train"],
                       num_proc=4)
 
-data_collator = DataCollatorCTCWithPadding(processor=processor, padding="longest")
+data_collator = DataCollatorCTCWithPadding(processor=processor,
+                                           padding="longest")
 
 model = AutoModelForCTC.from_pretrained(
     "facebook/wav2vec2-base",
     ctc_loss_reduction="mean",
     pad_token_id=processor.tokenizer.pad_token_id)
-
 
 #import pdb;
 #pdb.set_trace()
@@ -108,21 +108,23 @@ model = AutoModelForCTC.from_pretrained(
 #    print(data.keys())
 #    break
 
+# asr_mind_model01: 16 batch, 1e-4
+# asr_mind_model01: 16 batch, 3e-4
 
 training_args = TrainingArguments(
-    output_dir="my_awesome_asr_mind_model",
-    per_device_train_batch_size=8,
+    output_dir="asr_mind_model_00",
+    per_device_train_batch_size=16,
     gradient_accumulation_steps=2,
-    learning_rate=1e-5,
+    learning_rate=3e-4,
     warmup_steps=500,
-    max_steps=2000,
+    max_steps=20000,
     gradient_checkpointing=True,
     fp16=True,
     group_by_length=True,
     eval_strategy="steps",
-    per_device_eval_batch_size=8,
+    per_device_eval_batch_size=16,
     save_steps=1000,
-    eval_steps=1000,
+    eval_steps=100,
     logging_steps=25,
     load_best_model_at_end=True,
     metric_for_best_model="wer",
@@ -141,4 +143,3 @@ trainer = Trainer(
 )
 
 trainer.train()
-
