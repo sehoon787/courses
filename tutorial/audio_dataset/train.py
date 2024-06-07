@@ -108,20 +108,23 @@ model = AutoModelForCTC.from_pretrained(
 #    print(data.keys())
 #    break
 
+# asr_mind_model01: 16 batch, 1e-4
+# asr_mind_model01: 16 batch, 3e-4
+
 training_args = TrainingArguments(
-    output_dir="my_awesome_asr_mind_model",
-    per_device_train_batch_size=8,
+    output_dir="asr_mind_model_00",
+    per_device_train_batch_size=16,
     gradient_accumulation_steps=2,
-    learning_rate=1e-5,
+    learning_rate=3e-4,
     warmup_steps=500,
-    max_steps=2000,
+    max_steps=20000,
     gradient_checkpointing=True,
     fp16=True,
     group_by_length=True,
     eval_strategy="steps",
-    per_device_eval_batch_size=8,
+    per_device_eval_batch_size=16,
     save_steps=1000,
-    eval_steps=1000,
+    eval_steps=100,
     logging_steps=25,
     load_best_model_at_end=True,
     metric_for_best_model="wer",
