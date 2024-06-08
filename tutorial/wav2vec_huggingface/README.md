@@ -39,3 +39,22 @@ For speech recognition evaluation
 
 Reference:
 https://huggingface.co/docs/datasets/v1.11.0/installation.html
+
+
+2. Sentence Piece
+
+https://pypi.org/project/sentencepiece/
+`pip install sentencepiece`
+
+
+```spm_train --input=train-all.trans_without_uttid.txt \
+       --model_prefix=model_unigram_${vocab_size}  \
+       --vocab_size=${vocab_size} \
+       --character_coverage=1.0 \
+       --model_type=unigram```
+spm_train --input=train-all.trans_without_uttid.txt \
+       --model_prefix=model_bpe_${vocab_size}  \
+       --vocab_size=${vocab_size} \
+       --character_coverage=1.0 \
+       --model_type=bpe```
+
