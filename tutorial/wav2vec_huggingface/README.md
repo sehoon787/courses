@@ -58,3 +58,13 @@ spm_train --input=train-all.trans_without_uttid.txt \
        --character_coverage=1.0 \
        --model_type=bpe```
 
+
+
+
+3. STOP dataset
+
+We used the music portion.
+
+But we removed 00011525.wav.
+
+So the total number of utterances is reduced from 11563 to 11562.
