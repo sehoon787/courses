@@ -18,7 +18,7 @@ import numpy as np
 from data.format import speech_data_helper
 from typing import Any, Dict, List, Optional, Union
 
-db_top_dir="/home/chanwcom/databases/"
+db_top_dir = "/home/chanwcom/databases/"
 #db_top_dir = "/home/chanwcom/speech_database"
 train_top_dir = os.path.join(db_top_dir, "stop/music_train_tfrecord")
 test_top_dir = os.path.join(db_top_dir,
@@ -73,7 +73,8 @@ class IterDataset(data.IterableDataset):
             output["input_length"] = tf.squeeze(data[0]["SEQ_LEN"]).numpy()
             with processor.as_target_processor():
                 output["labels"] = processor(
-                    data[1]["SEQ_DATA"][0].numpy().decode("unicode_escape")).input_ids
+                    data[1]["SEQ_DATA"][0].numpy().decode(
+                        "unicode_escape")).input_ids
 
             yield (output)
 
@@ -152,7 +153,8 @@ model = AutoModelForCTC.from_pretrained(
 # asr_stop_model_06: base, 1e-4, 40batch, 10000, grad_acc = 1
 
 training_args = TrainingArguments(
-    output_dir="/home/chanwcom/local_repositories/cognitive_workflow_kit/tool/models/asr_stop_model_final",
+    output_dir=
+    "/home/chanwcom/local_repositories/cognitive_workflow_kit/tool/models/asr_stop_model_final",
     per_device_train_batch_size=40,
     gradient_accumulation_steps=2,
     learning_rate=1e-4,

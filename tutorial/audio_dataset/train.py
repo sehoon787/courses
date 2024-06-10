@@ -87,10 +87,11 @@ class DataCollatorCTCWithPadding:
 
 dataset = dataset.cast_column("audio", Audio(sampling_rate=16_000))
 dataset = dataset.map(uppercase)
-
 dataset = dataset.map(prepare_dataset,
                       remove_columns=dataset.column_names["train"],
                       num_proc=4)
+
+
 
 data_collator = DataCollatorCTCWithPadding(processor=processor,
                                            padding="longest")
