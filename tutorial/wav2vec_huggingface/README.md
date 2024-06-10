@@ -23,7 +23,7 @@ Note that torchdata is added.
 
 `conda install pytorch torchvision torchaudio torchdata pytorch-cuda=11.8 -c pytorch -c nvidia``
 \
-`conda install -c conda-forge tensorflow`
+`conda install tensorflow`
 
 Install HuggingFace Transformers and Datasets.
 `pip install transformers datasets`
@@ -39,3 +39,17 @@ For speech recognition evaluation
 
 Reference:
 https://huggingface.co/docs/datasets/v1.11.0/installation.html
+
+2. Bazel installation
+
+Use bazelisk
+https://bazel.build/install/ubuntu
+
+
+3. STOP dataset
+
+We used the music portion.
+
+But we removed 00011525.wav.
+
+So the total number of utterances is reduced from 11563 to 11562.
