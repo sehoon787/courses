@@ -17,19 +17,26 @@ py_library(
     srcs = [
         "speech_data_helper.py",
     ],
+    imports = [
+      "..",
+    ],
     deps = [
         ":speech_data_pb2",
-        "//operation:operation",
+        "//2024_spring/xai604/project/operation:operation",
     ],
 )
 
 py_test(
-     name = "speech_data_helper_test",
-     srcs = [
-         "speech_data_helper_test.py",
-     ],
-     deps = [
-         ":speech_data_helper",
-         ":speech_data_pb2",
-     ],
+    name = "speech_data_helper_test",
+    srcs = [
+        "speech_data_helper_test.py",
+    ],
+    deps = [
+        ":speech_data_helper",
+        ":speech_data_pb2",
+    ],
+    imports = [
+      "..",
+    ],
+    legacy_create_init = False,
 )

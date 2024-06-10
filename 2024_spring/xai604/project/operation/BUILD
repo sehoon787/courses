@@ -5,4 +5,7 @@ py_library(
      srcs = [
          "operation.py",
      ],
+     imports = [
+        "..",
+     ]
 )

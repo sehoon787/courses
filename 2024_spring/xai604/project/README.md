@@ -54,4 +54,7 @@ But we removed 00011525.wav.
 
 So the total number of utterances is reduced from 11563 to 11562.
 
+TFRecord can be found here.
+https://drive.google.com/file/d/1FUrwZzeZ8S1su9MPaQVu4WDswM2AjPxG/view?usp=drive_link
+
 # 4. Run the scripts in the "run" directory
