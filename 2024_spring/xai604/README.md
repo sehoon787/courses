@@ -1,4 +1,3 @@
-
 ## XAI 604
 
-This is the XAI 604 web site.
+This is the repository for the XAI 604 course.
