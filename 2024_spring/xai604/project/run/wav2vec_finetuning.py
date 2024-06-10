@@ -1,3 +1,9 @@
+# pylint: disable=import-error, no-member
+from __future__ import (absolute_import, division, print_function,
+                         unicode_literals)
+
+__author__ = "Chanwoo Kim(chanwcom@gmail.com)"
+
 # Standard imports
 import glob
 import os
@@ -50,10 +56,7 @@ def to_torch(inputs: dict):
 
     return inputs
 
-
-#processor = AutoProcessor.from_pretrained("facebook/wav2vec2-base-100h")
 processor = AutoProcessor.from_pretrained("facebook/wav2vec2-base")
-
 
 class IterDataset(data.IterableDataset):
 
@@ -136,7 +139,6 @@ data_collator = DataCollatorCTCWithPadding(processor=processor,
                                            padding="longest")
 
 model = AutoModelForCTC.from_pretrained(
-    #"facebook/wav2vec2-base-100h",
     "facebook/wav2vec2-base",
     ctc_loss_reduction="mean",
     pad_token_id=processor.tokenizer.pad_token_id)

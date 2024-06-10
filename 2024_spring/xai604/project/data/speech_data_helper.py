@@ -27,8 +27,7 @@ assert version.parse(tf.__version__) >= version.parse("2.0.0"), (
 
 
 class WaveToSpeechData(operation.AbstractOperation):
-    """"""
-
+    """A class for coverting waveforms into SpeechData proto-message."""
     def __init__(self):
         pass
 
@@ -37,10 +36,9 @@ class WaveToSpeechData(operation.AbstractOperation):
 
         Args:
             inputs: A tuple of the following format:
-             ({"WAVE_HEADER": A list of  ,
+             ({"WAVE_HEADER":
                "SEQ_DATA"
                "SEQ_LEN"
-
                "SEQ_DATA": a batch of waveform data,
                "SEQ_LEN": a batch of lengths of waveform data},
               {"SEQ_DATA": a batch of label data,
