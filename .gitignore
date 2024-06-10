@@ -1,0 +1,22 @@
+.DS_Store
+.ipynb_checkpoints
+/.bazelrc
+/.tf_configure.bazelrc
+/bazel-*
+/bazel_pip
+*.o
+*.pyc
+__pycache__
+*.so
+
+# Ignores the swap file for vi and vim.
+*.swp
+
+# Ignores intermediate files generated while converting a tex file into a pdf
+# file.
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.log
+*.out
