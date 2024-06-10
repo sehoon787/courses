@@ -14,7 +14,7 @@ import numpy as np
 # Custom imports
 from data.format import speech_data_helper
 
-db_top_dir="/home/chanwcom/databases/"
+db_top_dir = "/home/chanwcom/databases/"
 train_top_dir = os.path.join(db_top_dir, "stop/music_train_tfrecord")
 test_top_dir = os.path.join(db_top_dir,
                             "stop/test_0_music_random_300_tfrecord")
@@ -39,6 +39,8 @@ test_dataset = test_dataset.map(op.process)
 # yapf: enable
 
 model_name = "google-bert/bert-base-uncased"
+
+
 def find_index(inputs):
     intents = [
         "ADD_TO_PLAYLIST_MUSIC",
@@ -67,15 +69,21 @@ def find_index(inputs):
 
     return index
 
-model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=14)
+
+model = AutoModelForSequenceClassification.from_pretrained(model_name,
+                                                           num_labels=14)
 tokenizer = AutoTokenizer.from_pretrained(model_name)
+
 
 def tokenize_function(examples):
     return tokenizer(examples, padding="max_length", truncation=True)
 
+
 metric = evaluate.load("accuracy")
 
+
 class IterDataset(data.IterableDataset):
+
     def __init__(self, tf_dataset):
         self._dataset = tf_dataset
         op = speech_data_helper.SpeechDataToWave()
@@ -91,16 +99,20 @@ class IterDataset(data.IterableDataset):
 
             yield (output)
 
+
 pytorch_train_dataset = IterDataset(train_dataset)
 pytorch_test_dataset = IterDataset(test_dataset)
+
 
 def compute_metrics(eval_pred):
     logits, labels = eval_pred
     predictions = np.argmax(logits, axis=-1)
     return metric.compute(predictions=predictions, references=labels)
 
+
 training_args = TrainingArguments(
-    output_dir="/home/chanwcom/local_repositories/cognitive_workflow_kit/tool/models/bert_model",
+    output_dir=
+    "/home/chanwcom/local_repositories/cognitive_workflow_kit/tool/models/bert_model",
     per_device_train_batch_size=40,
     gradient_accumulation_steps=2,
     learning_rate=1e-4,

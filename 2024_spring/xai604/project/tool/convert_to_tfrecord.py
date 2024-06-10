@@ -83,7 +83,6 @@ with open(trans_file, "rt") as file:
     writer = tf.io.TFRecordWriter(
         shard_name, options=tf.io.TFRecordOptions(compression_type="GZIP"))
 
-
     example_index = 0
 
     line = True
@@ -134,7 +133,6 @@ with open(trans_file, "rt") as file:
             map_field = speech_data.attributes.add()
             map_field.key = "INTENT"
             map_field.value = match.group(1)
-
 
             match = re.match(r".*__\"SLOT\"__:(.*)", line)
             map_field = speech_data.attributes.add()
