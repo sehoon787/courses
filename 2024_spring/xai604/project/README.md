@@ -40,16 +40,18 @@ For speech recognition evaluation
 Reference:
 https://huggingface.co/docs/datasets/v1.11.0/installation.html
 
-2. Bazel installation
+# 2. Bazel installation
 
 Use bazelisk
 https://bazel.build/install/ubuntu
 
 
-3. STOP dataset
+# 3. STOP dataset
 
 We used the music portion.
 
 But we removed 00011525.wav.
 
 So the total number of utterances is reduced from 11563 to 11562.
+
+# 4. Run the scripts in the "run" directory
