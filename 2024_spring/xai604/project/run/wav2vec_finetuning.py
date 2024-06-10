@@ -59,15 +59,8 @@ def to_torch(inputs: dict):
 processor = AutoProcessor.from_pretrained("facebook/wav2vec2-base")
 
 class IterDataset(data.IterableDataset):
-
     def __init__(self, tf_dataset):
         self._dataset = tf_dataset
-        op = speech_data_helper.SpeechDataToWave()
-
-        # The following line is neede, otherwise ..dataset.map will not work
-
-        # Parses the serialized data.
-        #self._dataset = self._dataset.map(op.process)
 
     def __iter__(self):
         for data in self._dataset:
@@ -84,7 +77,6 @@ class IterDataset(data.IterableDataset):
 
 pytorch_train_dataset = IterDataset(train_dataset)
 pytorch_test_dataset = IterDataset(test_dataset)
-
 
 def compute_metrics(pred):
     pred_logits = pred.predictions
@@ -142,17 +134,6 @@ model = AutoModelForCTC.from_pretrained(
     "facebook/wav2vec2-base",
     ctc_loss_reduction="mean",
     pad_token_id=processor.tokenizer.pad_token_id)
-
-# asr_mind_model00: 16 batch, 1e-4
-# asr_mind_model01: 16 batch, 3e-4
-
-# asr_stop_model_00: 100h, 1e-4, 32batch   7.3% WER?
-# asr_stop_model_01: base, 1e-4, 32batch
-# asr_stop_model_02: base, 2e-4, 40batch, 5000
-# asr_stop_model_03: base, 1e-4, 40batch, 5000
-# asr_stop_model_04: base, 1e-4, 40batch, 10000
-# asr_stop_model_05: base, 1e-4, 40batch, 10000, sum
-# asr_stop_model_06: base, 1e-4, 40batch, 10000, grad_acc = 1
 
 training_args = TrainingArguments(
     output_dir=
