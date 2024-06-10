@@ -15,7 +15,7 @@ import evaluate
 import numpy as np
 
 # Custom imports
-from data.format import speech_data_helper
+from data import speech_data_helper
 from typing import Any, Dict, List, Optional, Union
 
 db_top_dir = "/home/chanwcom/databases/"

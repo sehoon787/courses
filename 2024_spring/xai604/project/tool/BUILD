@@ -7,7 +7,10 @@ py_binary(
     srcs = [
         "convert_to_tfrecord.py",
     ],
+    imports = [
+        "..",
+    ],
     deps = [
-        "//data/format:speech_data_pb2",
+        "//2024_spring/xai604/project/data:speech_data_pb2",
     ],
 )

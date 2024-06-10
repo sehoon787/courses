@@ -15,8 +15,8 @@ import tensorflow as tf
 from google.protobuf import descriptor_pb2
 
 # Custom imports
-from data.format import speech_data_helper
-from data.format import speech_data_pb2
+from data import speech_data_helper
+from data import speech_data_pb2
 
 
 class WaveToSpeechDataTest(tf.test.TestCase):

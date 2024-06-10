@@ -11,7 +11,7 @@ import tensorflow as tf
 import torch
 
 # Custom imports
-from data.format import speech_data_helper
+from data import speech_data_helper
 
 db_top_dir = "/home/chanwcom/databases/"
 train_top_dir = os.path.join(db_top_dir, "stop/music_train_tfrecord")

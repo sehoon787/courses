@@ -38,5 +38,4 @@ py_test(
     imports = [
       "..",
     ],
-    legacy_create_init = False,
 )

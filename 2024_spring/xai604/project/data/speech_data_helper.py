@@ -19,7 +19,7 @@ from google.protobuf import descriptor_pb2
 from packaging import version
 
 # Custom imports
-from data.format import speech_data_pb2
+from data import speech_data_pb2
 from operation import operation
 
 assert version.parse(tf.__version__) >= version.parse("2.0.0"), (

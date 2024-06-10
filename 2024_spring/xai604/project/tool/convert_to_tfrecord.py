@@ -10,7 +10,7 @@ import soundfile as sf
 import tensorflow as tf
 
 # Custom imports
-from data.format import speech_data_pb2
+from data import speech_data_pb2
 
 TRAIN = False
 
