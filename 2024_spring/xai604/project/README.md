@@ -62,6 +62,9 @@ https://drive.google.com/file/d/1FUrwZzeZ8S1su9MPaQVu4WDswM2AjPxG/view?usp=drive
 
 # 4. Run the scripts in the "run" directory
 `bazel run :wav2vec_training`
+\
 `bazel run :wav2vec_inference`
+\
 `bazel run :bert_training`
+\
 `bazel run :bert_inference`
