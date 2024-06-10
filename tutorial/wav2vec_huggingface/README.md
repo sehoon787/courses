@@ -23,7 +23,7 @@ Note that torchdata is added.
 
 `conda install pytorch torchvision torchaudio torchdata pytorch-cuda=11.8 -c pytorch -c nvidia``
 \
-`conda install -c conda-forge tensorflow`
+`conda install tensorflow`
 
 Install HuggingFace Transformers and Datasets.
 `pip install transformers datasets`
@@ -40,25 +40,10 @@ For speech recognition evaluation
 Reference:
 https://huggingface.co/docs/datasets/v1.11.0/installation.html
 
+2. Bazel installation
 
-2. Sentence Piece
-
-https://pypi.org/project/sentencepiece/
-`pip install sentencepiece`
-
-
-```spm_train --input=train-all.trans_without_uttid.txt \
-       --model_prefix=model_unigram_${vocab_size}  \
-       --vocab_size=${vocab_size} \
-       --character_coverage=1.0 \
-       --model_type=unigram```
-spm_train --input=train-all.trans_without_uttid.txt \
-       --model_prefix=model_bpe_${vocab_size}  \
-       --vocab_size=${vocab_size} \
-       --character_coverage=1.0 \
-       --model_type=bpe```
-
-
+Use bazelisk
+https://bazel.build/install/ubuntu
 
 
 3. STOP dataset
