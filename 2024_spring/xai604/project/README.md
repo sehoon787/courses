@@ -40,17 +40,20 @@ For speech recognition evaluation
 Reference:
 https://huggingface.co/docs/datasets/v1.11.0/installation.html
 
-# 2. Bazel installation
+# 2. Bazel and protoc installation
 
 Use bazelisk
 https://bazel.build/install/ubuntu
+
+`sudo apt install protobuf-compiler`
 
 
 # 3. STOP dataset
 
 We used the music portion.
-
 But we removed 00011525.wav.
+You may download the compressed sharded TFRecord from the following directory:
+https://drive.google.com/file/d/1FUrwZzeZ8S1su9MPaQVu4WDswM2AjPxG/view?usp=drive_link
 
 So the total number of utterances is reduced from 11563 to 11562.
 
@@ -58,3 +61,7 @@ TFRecord can be found here.
 https://drive.google.com/file/d/1FUrwZzeZ8S1su9MPaQVu4WDswM2AjPxG/view?usp=drive_link
 
 # 4. Run the scripts in the "run" directory
+`bazel run :wav2vec_training`
+`bazel run :wav2vec_inference`
+`bazel run :bert_training`
+`bazel run :bert_inference`
