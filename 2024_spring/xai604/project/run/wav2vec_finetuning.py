@@ -49,13 +49,6 @@ test_dataset = test_dataset.prefetch(tf.data.experimental.AUTOTUNE)
 test_dataset = test_dataset.map(op.process)
 # yapf: enable
 
-
-def to_torch(inputs: dict):
-    for key in inputs.keys():
-        inputs[key] = torch.tensor(inputs[key].numpy())
-
-    return inputs
-
 processor = AutoProcessor.from_pretrained("facebook/wav2vec2-base")
 
 class IterDataset(data.IterableDataset):
