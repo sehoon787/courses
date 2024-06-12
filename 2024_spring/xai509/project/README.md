@@ -36,13 +36,13 @@ Run the unit test to check whether the code is executed correctly:
 
 The main entry point of the Tensorflow code in "seq_loss_util.py" is `def ctc_loss(labels, labels_len, logits, logits_len)`.
 
-First, implement "to_blank_augmented_labels" in PyTorch.
+- First, implement "to_blank_augmented_labels" in PyTorch.
 
-Second, implement "label_trans_table" in PyTorch.
+- Second, implement "label_trans_table" in PyTorch.
 
-Third, implement "calculate_alpha_beta" in PyTorch. "calculate_alpha_beta" will call "_calculate_unnormalized_log_seq_prob" and "calculate_log_label_prob".
+- Third, implement "calculate_alpha_beta" in PyTorch. "calculate_alpha_beta" will call "_calculate_unnormalized_log_seq_prob" and "calculate_log_label_prob".
 
-Finally, implement the entire "ctc_loss" method.
+- Finally, implement the entire "ctc_loss" method.
 
 
 I will create a PyTorch unit test which is doing the same thing as "seq_loss_util_test.py" to check whether your code passes the unit test.
