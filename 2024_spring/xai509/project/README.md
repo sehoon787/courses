@@ -36,84 +36,40 @@ Run the unit test to check whether the code is executed correctly:
 
 The main entry point of the Tensorflow code in "seq_loss_util.py" is `def ctc_loss(labels, labels_len, logits, logits_len)`.
 
-- First, implement "to_blank_augmented_labels" in PyTorch.
+The following is the recommended steps to impelement the `ctc_loss` method in PyTorch.
 
-- Second, implement "label_trans_table" in PyTorch.
+- First, implement the `to_blank_augmented_labels` method in PyTorch.
 
-- Third, implement "calculate_alpha_beta" in PyTorch. "calculate_alpha_beta" will call "_calculate_unnormalized_log_seq_prob" and "calculate_log_label_prob".
+- Second, implement `label_trans_table` in PyTorch.
 
-- Finally, implement the entire "ctc_loss" method.
+- Third, implement `calculate_alpha_beta` in PyTorch. `calculate_alpha_beta` will call `_calculate_unnormalized_log_seq_prob` and `calculate_log_label_prob`.
+
+- Finally, implement the entire `ctc_loss` method.
 
 
 I will create a PyTorch unit test which is doing the same thing as "seq_loss_util_test.py" to check whether your code passes the unit test.
 
 
 
-
-
-
-
-
-
-
 ## 2) Phase-II
-Fine tune the model using the implemented CTC loss.
+Phase-II is the optional phase, but students will the get extra 15% of points if he or she completes this phase.
+You will use the toolkit used for XAI 604 project "https://github.com/chanwcom/courses/tree/main/2024_spring/xai604/project"
 
+But unlike 604 project, you will only use the speech recogniton part.
 
-# 1. Setup the environment.
+- First, set up the environment mentioned in https://github.com/chanwcom/courses/blob/main/2024_spring/xai604/project/README.md.
 
+- Second, perform fine tuning using `wav2vec_finetuing.py` in https://github.com/chanwcom/courses/tree/main/2024_spring/xai604/project/run.
+  
+- Third, perform inferencing using `wav2vec_inference.py` in the same directory.
 
-Create the Conda environment.
+ The objective is using your loss function created in Phase-I instead of the default CTC loss.
+ You may use the following approach to use your loss function.
+```
+from transformers import Trainer
 
-`conda create --name py3_10_hf python=3.10`
-
-Activate the Conda environment created just ago.
-
-`conda activate py3_10_hf`
-
-
-Install PyTorch and Tensorflow.
-
-https://pytorch.org/get-started/locally/
-Check the CUDA version
-`nvcc --version`
-
-Select the command at the bottom of the table, after seleting the right "Compute Platform"
-For example, if the CUDA version is 11.8, then run the following command:
-Note that torchdata is added.
-
-
-`conda install pytorch torchvision torchaudio torchdata pytorch-cuda=11.8 -c pytorch -c nvidia``
-\
-`conda install Tensorflow`
-
-Install HuggingFace Transformers and Datasets.
-`pip install transformers datasets`
-
-SoundFile installation
-`pip install soundfile`
-
-Librosa installtion
-`conda install -c conda-forge librosa`
-
-For speech recognition evaluation
-`pip install evaluate jiwer`
-
-Reference:
-https://huggingface.co/docs/datasets/v1.11.0/installation.html
-
-# 2. Bazel installation
-
-Use bazelisk
-https://bazel.build/install/ubuntu
-
-
-# 3. STOP dataset
-
-We used the music portion.
-
-But we removed 00011525.wav.
-
-So the total number of utterances is reduced from 11563 to 11562.
-
-# 4. Run the scripts in the "run" directory
+class MyTrainer(Trainer):
+    def compute_loss(self, model, inputs):
+        ctc_loss = ... your ctc loss ...
+        return ctc_loss
+```
