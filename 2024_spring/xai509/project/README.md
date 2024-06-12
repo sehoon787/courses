@@ -9,7 +9,8 @@ Due Date: By Next Weekend (June 23th).
 
 ## 1) Phase-I "Implementation of the CTC loss"
 It is fine to do only the phase-I of the project, although extra (15%) points will be given if a student successfully completes the phase-II.
-I wrote the Tensorflow version in https://github.com/chanwcom/cognitive_workflow_kit/tree/main/loss/Tensorflow
+I wrote the Tensorflow version in https://github.com/chanwcom/cognitive_workflow_kit/tree/main/loss/tensorflow
+
 
 ### a) First, I recommend you check the Tensorflow example in the following steps
 
