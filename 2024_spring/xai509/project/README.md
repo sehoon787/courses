@@ -27,7 +27,7 @@ Activate the Conda environment created just ago.
 Install Tensorflow and Tensorflow probability.
 `conda install Tensorflow Tensorflow-probability`
 
-Download the code in https://github.com/chanwcom/cognitive_workflow_kit/tree/main/loss/Tensorflow.
+Download the code in (https://github.com/chanwcom/cognitive_workflow_kit/tree/main/loss/Tensorflow).
 Instead of downloading the entire repository, you may only download "seq_loss_util.py" and "seq_loss_util_test.py"
 
 Run the unit test to check whether the code is executed correctly:
