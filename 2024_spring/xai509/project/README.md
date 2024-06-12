@@ -46,6 +46,17 @@ The following is the recommended steps to impelement the `ctc_loss` method in Py
 
 - Finally, implement the entire `ctc_loss` method.
 
+  Instead of the `tf.custom_gradient` in Tensorflow, you may use the following technique in PyTorch.
+```
+  class MyLoss(torch.autograd.Function):
+    @staticmethod
+    def forward(ctx, x):
+        return ctc_loss(x)
+
+    @staticmethod
+    def backward(ctx, grad):
+        return custom_grad_ctc_loss(grad)
+```
 
 I will create a PyTorch unit test which is doing the same thing as "seq_loss_util_test.py" to check whether your code passes the unit test.
 
