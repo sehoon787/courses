@@ -22,8 +22,9 @@ Note that torchdata is added.
 
 
 `conda install pytorch torchvision torchaudio torchdata pytorch-cuda=11.8 -c pytorch -c nvidia``
-\
-`conda install tensorflow`
+
+
+`conda install tensorflow-cpu`
 
 Install HuggingFace Transformers and Datasets.
 `pip install transformers datasets`
