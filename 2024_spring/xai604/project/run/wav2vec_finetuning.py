@@ -24,8 +24,7 @@ import numpy as np
 from data import speech_data_helper
 from typing import Any, Dict, List, Optional, Union
 
-
-# Preventing Tensorflow from using the entire GPU memory.
+# Prevents Tensorflow from using the entire GPU memory.
 #
 # Since we use Tensorflow and Pytorch simultaneously, Tensorflow shouldl not
 # occupy the entire memory. Instead of allocating the entire GPU memory, GPU
@@ -46,7 +45,6 @@ if gpus:
     print(e)
 
 db_top_dir = "/home/chanwcom/databases/"
-#db_top_dir = "/home/chanwcom/speech_database"
 train_top_dir = os.path.join(db_top_dir, "stop/music_train_tfrecord")
 test_top_dir = os.path.join(db_top_dir,
                             "stop/test_0_music_random_300_tfrecord")
