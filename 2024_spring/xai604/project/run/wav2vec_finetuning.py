@@ -24,6 +24,27 @@ import numpy as np
 from data import speech_data_helper
 from typing import Any, Dict, List, Optional, Union
 
+
+# Preventing Tensorflow from using the entire GPU memory.
+#
+# Since we use Tensorflow and Pytorch simultaneously, Tensorflow shouldl not
+# occupy the entire memory. Instead of allocating the entire GPU memory, GPU
+# memory allocated to Tensorflow grows based on its need. Refer to the
+# following website for more information:
+# https://www.tensorflow.org/guide/gpu
+gpus = tf.config.list_physical_devices("GPU")
+if gpus:
+  try:
+    # Currently, memory growth needs to be the same across GPUs.
+    for gpu in gpus:
+      tf.config.experimental.set_memory_growth(gpu, True)
+    logical_gpus = tf.config.list_logical_devices("GPU")
+    print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
+
+  except RuntimeError as e:
+    # Memory growth must be set before GPUs have been initialized.
+    print(e)
+
 db_top_dir = "/home/chanwcom/databases/"
 #db_top_dir = "/home/chanwcom/speech_database"
 train_top_dir = os.path.join(db_top_dir, "stop/music_train_tfrecord")
@@ -37,7 +58,8 @@ train_dataset = tf.data.TFRecordDataset(
               compression_type="GZIP")
 train_dataset = train_dataset.batch(1)
 train_dataset = train_dataset.prefetch(tf.data.experimental.AUTOTUNE)
-train_dataset = train_dataset.map(op.process)
+train_dataset = train_dataset.map(
+    op.process, num_parallel_calls=tf.data.AUTOTUNE)
 # yapf: enable
 
 # yapf: disable
@@ -134,11 +156,10 @@ training_args = TrainingArguments(
     per_device_train_batch_size=40,
     gradient_accumulation_steps=2,
     learning_rate=1e-4,
-    warmup_steps=500,
+    warmup_steps=1000,
     max_steps=10000,
     gradient_checkpointing=True,
     fp16=True,
-    #group_by_length=True,
     eval_strategy="steps",
     per_device_eval_batch_size=40,
     save_steps=5000,
