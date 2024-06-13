@@ -26,7 +26,7 @@ Note that torchdata is added.
 \
 `conda install tensorflow-cpu`
 
-Install HuggingFace Transformers and Datasets.
+Install HuggingFace **Transformers** and **Datasets**.
 \
 `pip install transformers datasets`
 
