@@ -66,6 +66,12 @@ TFRecord can be found here.
 https://drive.google.com/file/d/1FUrwZzeZ8S1su9MPaQVu4WDswM2AjPxG/view?usp=drive_link
 
 # 4. Run the scripts in the "run" directory
+
+If GPU0 is available, then set the following configuration variables:
+\
+`export NCCL_P2P_DISABLE=1; export NCCL_IB_DISABLE=1; export CUDA_VISIBLE_DEVICES=0`
+
+
 `bazel run :wav2vec_training`
 \
 `bazel run :wav2vec_inference`
