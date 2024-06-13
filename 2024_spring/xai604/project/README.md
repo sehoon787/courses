@@ -14,6 +14,7 @@ Install Pytorch and Tensorflow.
 
 https://pytorch.org/get-started/locally/
 Check the CUDA version
+\
 `nvcc --version`
 
 Select the command at the bottom of the table, after seleting the right "Compute Platform"
@@ -21,20 +22,24 @@ For example, if the CUDA version is 11.8, then run the following command:
 Note that torchdata is added.
 
 
-`conda install pytorch torchvision torchaudio torchdata pytorch-cuda=11.8 -c pytorch -c nvidia``
+`conda install pytorch torchvision torchaudio torchdata pytorch-cuda=11.8 -c pytorch -c nvidia`
 \
-`conda install tensorflow`
+`conda install tensorflow-cpu`
 
-Install HuggingFace Transformers and Datasets.
+Install HuggingFace **Transformers** and **Datasets**.
+\
 `pip install transformers datasets`
 
 SoundFile installation
+\
 `pip install soundfile`
 
 Librosa installtion
+\
 `conda install -c conda-forge librosa`
 
 For speech recognition evaluation
+\
 `pip install evaluate jiwer`
 
 Reference:
@@ -61,6 +66,12 @@ TFRecord can be found here.
 https://drive.google.com/file/d/1FUrwZzeZ8S1su9MPaQVu4WDswM2AjPxG/view?usp=drive_link
 
 # 4. Run the scripts in the "run" directory
+
+If GPU0 is available, then set the following configuration variables:
+\
+`export NCCL_P2P_DISABLE=1; export NCCL_IB_DISABLE=1; export CUDA_VISIBLE_DEVICES=0`
+
+
 `bazel run :wav2vec_training`
 \
 `bazel run :wav2vec_inference`
