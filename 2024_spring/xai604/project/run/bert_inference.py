@@ -9,8 +9,9 @@ import glob
 import os
 
 # Third-party imports
-from transformers import TrainingArguments, Trainer, AutoModelForSequenceClassification, AutoTokenizer
+from transformers import pipeline
 from datasets import load_dataset
+from transformers import AutoTokenizer
 from torch.utils import data
 import tensorflow as tf
 import torch
@@ -96,15 +97,10 @@ def find_index(inputs):
 
     return index
 
-
-model = AutoModelForSequenceClassification.from_pretrained(model_name,
-                                                           num_labels=14)
 tokenizer = AutoTokenizer.from_pretrained(model_name)
-
 
 def tokenize_function(examples):
     return tokenizer(examples, padding="max_length", truncation=True)
-
 
 metric = evaluate.load("accuracy")
 
