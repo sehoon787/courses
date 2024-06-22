@@ -18,8 +18,14 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 |   Number of Dimensions    |   torch.Tensor.dim() |     tf.rank()       |   numpy.ndarray.ndim  |
 
 
+## Tensor Arithmetic
+|                           |   PyTorch         |     Tensorflow      |        NumPy       | 
+|---------------------------|-------------------|---------------------|--------------------|
+|                           |   torch.abs()     |     tf.abs()        |                    |
 
-# Tensor Manipulation
+
+
+## Tensor Manipulation
 |                           |   PyTorch         |     Tensorflow      |        NumPy       | 
 |---------------------------|-------------------|---------------------|--------------------|
 |                           |   torch.reshape() |     tf.reshape()    |                    |
@@ -29,7 +35,6 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 ## Indexing
 * tf.gather
 * tf.scatter_nd_update
-
 
 
 
