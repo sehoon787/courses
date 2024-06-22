@@ -1,10 +1,12 @@
 
 
-# Initialization
-|                           |   PyTorch         |     Tensorflow      |        NumPy       | 
-|---------------------------|-------------------|---------------------|--------------------|
-|                           |   torch.tensor()  |     tf.constant()   |   np.array()       |
-|                           |   torch.full()    |     tf.fill()       |   np.full()        |
+# Tensor Initialization
+|                           |   PyTorch           |     Tensorflow         |        NumPy       | 
+|---------------------------|---------------------|------------------------|--------------------|
+|                           |   torch.tensor()    |     tf.constant()      |   np.array()       |
+|                           |   torch.full()      |     tf.fill()          |   np.full()        |
+|                           |  torch.from_numpy() | tf.convert_to_tensor() |         -          |   
+
 
 ```
 p0 = torch.tensor([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]],  dtype=torch.float64)
@@ -12,14 +14,14 @@ t1 = torch.tensor(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 t0 = tf.constant([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]], dtype=tf.dtypes.float32)
 t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 ```
-# Initialization
+# Attributes
 |                           |   PyTorch            |     Tensorflow      |        NumPy          | 
 |---------------------------|----------------------|---------------------|-----------------------|
 |   Number of Dimensions    |   torch.Tensor.dim() |     tf.rank()       |   numpy.ndarray.ndim  |
 
 
 
-# Reshaping
+# Tensor Manipulation
 |                           |   PyTorch         |     Tensorflow      |        NumPy       | 
 |---------------------------|-------------------|---------------------|--------------------|
 |                           |   torch.reshape() |     tf.reshape()    |                    |
@@ -29,13 +31,6 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 # Indexing
 * tf.gather
 * tf.scatter_nd_update
-
-
-# NumPy to Tensor
-
-|                           |   PyTorch         |     Tensorflow      |        NumPy         |
-|---------------------------|-------------------|---------------------|----------------------|
-|                           |  torch.from_numpy() | tf.convert_to_tensor() |  -  |   
 
 
 
