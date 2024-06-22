@@ -16,8 +16,13 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 
 # Reshaping
 
+* tf.reshape
+* tf.concat
+* tf.stack
 
-# 
+# Indexing
+* tf.gather
+* tf.scatter_nd_update
 
 
 # NumPy to Tensor
