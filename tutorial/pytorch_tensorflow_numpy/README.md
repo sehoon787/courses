@@ -1,8 +1,8 @@
 
 
 # Initialization
-|                           |   PyTorch         |     Tensorflow      |        NumPy         |
-|---------------------------|-------------------|---------------------|----------------------|                           |   torch.full()    |     tf.fill()       | 
+|                           |   PyTorch         |     Tensorflow      |        NumPy       | 
+|---------------------------|-------------------|---------------------|--------------------|                           |   torch.full()    |     tf.fill()       |                    |
 
 
 # NumPy to Tensor
