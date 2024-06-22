@@ -1,6 +1,4 @@
-
-
-# Tensor Initialization
+## Tensor Initialization
 |                           |   PyTorch           |     Tensorflow         |        NumPy       | 
 |---------------------------|---------------------|------------------------|--------------------|
 |                           |   torch.tensor()    |     tf.constant()      |   np.array()       |
@@ -14,7 +12,7 @@ t1 = torch.tensor(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 t0 = tf.constant([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]], dtype=tf.dtypes.float32)
 t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 ```
-# Attributes
+## Attributes
 |                           |   PyTorch            |     Tensorflow      |        NumPy          | 
 |---------------------------|----------------------|---------------------|-----------------------|
 |   Number of Dimensions    |   torch.Tensor.dim() |     tf.rank()       |   numpy.ndarray.ndim  |
@@ -28,14 +26,14 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 |                           |   torch.cat()     |     tf.concat()     |                    |
 |                           |   torch.stack()   |     tf.stack()      |                    |
 
-# Indexing
+## Indexing
 * tf.gather
 * tf.scatter_nd_update
 
 
 
 
-# Random Number
+## Random Number
 
 |                           |   PyTorch       |     Tensorflow      |        NumPy         |
 |---------------------------|-----------------|---------------------|----------------------|
@@ -50,3 +48,4 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 
 PyTorch Cheat Sheet https://pytorch.org/tutorials/beginner/ptcheat.html
 PyTorch Tensorflow CheatSheet  https://github.com/cdeboeser/tensorflow-torch-cheatsheet
+https://bladejun.tistory.com/145
