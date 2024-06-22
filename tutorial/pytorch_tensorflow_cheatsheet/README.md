@@ -31,6 +31,7 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 |                           |   torch.reshape() |     tf.reshape()    |                    |
 |                           |   torch.cat()     |     tf.concat()     |                    |
 |                           |   torch.stack()   |     tf.stack()      |                    |
+|                           |   torch.repeat()  |     tf.tile()      |                    |
 
 ## Indexing
 * tf.gather
