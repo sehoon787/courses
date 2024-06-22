@@ -2,8 +2,15 @@
 
 # Initialization
 |                           |   PyTorch         |     Tensorflow      |        NumPy       | 
-|---------------------------|-------------------|---------------------|--------------------|                          
-|                           |   torch.full()    |     tf.fill()       |                    |
+|---------------------------|-------------------|---------------------|--------------------|
+|                           |   torch.tensor()  |     tf.constant()   |   np.array()       |
+|                           |   torch.full()    |     tf.fill()       |   np.full()        |
+
+
+# Reshaping
+
+
+# 
 
 
 # NumPy to Tensor
