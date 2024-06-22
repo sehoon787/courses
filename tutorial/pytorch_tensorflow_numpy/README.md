@@ -1,9 +1,15 @@
 
+
+# Initialization
+|                           |   PyTorch         |     Tensorflow      |        NumPy         |
+|---------------------------|-------------------|---------------------|----------------------|                           |   torch.full()    |     tf.fill()       | 
+
+
 # NumPy to Tensor
 
 |                           |   PyTorch         |     Tensorflow      |        NumPy         |
 |---------------------------|-------------------|---------------------|----------------------|
-|                           |  torch.from_numpy | tf.convert_to_tensor |   
+|                           |  torch.from_numpy() | tf.convert_to_tensor() |  -  |   
 
 
 
@@ -12,8 +18,8 @@
 
 |                           |   PyTorch       |     Tensorflow      |        NumPy         |
 |---------------------------|-----------------|---------------------|----------------------|
-|  Gaussian Random Number   | torch.randn     | tf.random.normal    |  np.random.normal    |
-|  Random Integer           | torch.randint   | tf.random.randint   |  np.random.randint   | 
+|  Gaussian Random Number   | torch.randn()     | tf.random.normal()    |  np.random.normal()    |
+|  Random Integer           | torch.randint()   | tf.random.randint()   |  np.random.randint()   | 
 
 
 
