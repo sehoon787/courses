@@ -2,7 +2,32 @@
 
 # Initialization
 |                           |   PyTorch         |     Tensorflow      |        NumPy       | 
-|---------------------------|-------------------|---------------------|--------------------|                           |   torch.full()    |     tf.fill()       |                    |
+|---------------------------|-------------------|---------------------|--------------------|
+|                           |   torch.tensor()  |     tf.constant()   |   np.array()       |
+|                           |   torch.full()    |     tf.fill()       |   np.full()        |
+
+```
+p0 = torch.tensor([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]],  dtype=torch.float64)
+t1 = torch.tensor(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
+t0 = tf.constant([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]], dtype=tf.dtypes.float32)
+t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
+```
+# Initialization
+|                           |   PyTorch            |     Tensorflow      |        NumPy          | 
+|---------------------------|----------------------|---------------------|-----------------------|
+|   Number of Dimensions    |   torch.Tensor.dim() |     tf.rank()       |   numpy.ndarray.ndim  |
+
+
+
+# Reshaping
+
+* tf.reshape
+* tf.concat
+* tf.stack
+
+# Indexing
+* tf.gather
+* tf.scatter_nd_update
 
 
 # NumPy to Tensor
