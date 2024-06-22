@@ -12,6 +12,11 @@ t1 = torch.tensor(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 t0 = tf.constant([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]], dtype=tf.dtypes.float32)
 t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 ```
+# Initialization
+|                           |   PyTorch            |     Tensorflow      |        NumPy          | 
+|---------------------------|----------------------|---------------------|-----------------------|
+|   Number of Dimensions    |   torch.Tensor.dim() |     tf.rank()       |   numpy.ndarray.ndim  |
+
 
 
 # Reshaping
