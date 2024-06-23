@@ -5,6 +5,8 @@
 |                           |   torch.full()      |     tf.fill()          |   np.full()        |
 |                           |  torch.from_numpy() | tf.convert_to_tensor() |         -          |
 |                           |  torch.range()      | tf.range()             |  np.arange()       |
+|                           |  torch.zeors()      | tf.zeros()             |  np.zeros()        |
+|                           |  torch.ones()       | tf.ones()              |  np.ones()         |
 
 
 ```
