@@ -22,7 +22,9 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 ## Tensor Arithmetic
 |                           |   PyTorch         |     Tensorflow      |        NumPy       |
 |---------------------------|-------------------|---------------------|--------------------|
-|                           |   torch.abs()     |     tf.abs()        |                    |
+|                           |   torch.min()     |    tf.reduce_min()   |                  | 
+|                           |   torch.max()     |    tf.reduce_max()   |                  | 
+|                           |   torch.abs()     |    tf.abs()        |                    |
 |                           |   torch.logaddexp() |    tfp.math.log_add_exp |             |
 
 
