@@ -61,6 +61,6 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 # References
 
 
-PyTorch Cheat Sheet https://pytorch.org/tutorials/beginner/ptcheat.html
-PyTorch Tensorflow CheatSheet  https://github.com/cdeboeser/tensorflow-torch-cheatsheet
-https://bladejun.tistory.com/145
+* PyTorch Cheat Sheet https://pytorch.org/tutorials/beginner/ptcheat.html
+* PyTorch Tensorflow CheatSheet  https://github.com/cdeboeser/tensorflow-torch-cheatsheet
+* https://bladejun.tistory.com/145
