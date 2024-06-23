@@ -16,6 +16,7 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 |                           |   PyTorch            |     Tensorflow      |        NumPy          |
 |---------------------------|----------------------|---------------------|-----------------------|
 |   Number of Dimensions    |   torch.Tensor.dim() |     tf.rank()       |   numpy.ndarray.ndim  |
+|   Shape of a Tensor       |   torch.Tensor.shape |     tf.shape() or<br> tf.Tensor.shape    |   numpy.ndarray.shape  |
 
 
 ## Tensor Arithmetic
