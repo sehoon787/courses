@@ -1,9 +1,9 @@
 ## Tensor Initialization
-|                           |   PyTorch           |     Tensorflow         |        NumPy       | 
+|                           |   PyTorch           |     Tensorflow         |        NumPy       |
 |---------------------------|---------------------|------------------------|--------------------|
 |                           |   torch.tensor()    |     tf.constant()      |   np.array()       |
 |                           |   torch.full()      |     tf.fill()          |   np.full()        |
-|                           |  torch.from_numpy() | tf.convert_to_tensor() |         -          |   
+|                           |  torch.from_numpy() | tf.convert_to_tensor() |         -          |
 
 
 ```
@@ -13,7 +13,7 @@ t0 = tf.constant([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]], dtype=tf.dtypes.float32)
 t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 ```
 ## Attributes
-|                           |   PyTorch            |     Tensorflow      |        NumPy          | 
+|                           |   PyTorch            |     Tensorflow      |        NumPy          |
 |---------------------------|----------------------|---------------------|-----------------------|
 |   Number of Dimensions    |   torch.Tensor.dim() |     tf.rank()       |   numpy.ndarray.ndim  |
 
@@ -24,14 +24,15 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 |                           |   torch.abs()     |     tf.abs()        |                    |
 
 
+# Tensor Manipulation
+|                            |   PyTorch                   |     Tensorflow      |        NumPy        |
+|----------------------------|-----------------------------|---------------------|---------------------|
+| Type Conversion            |   torch.Tensor.type()       |     tf.cast()       | np.ndarray.astype() |
+|                            |   torch.reshape()           |     tf.reshape()    |                     |
+|                            |   torch.cat()               |     tf.concat()     |                     |
+|                            |   torch.stack()             |     tf.stack()      |                     |
+|                            |   torch.repeat()            |     tf.tile()       |                     |
 
-## Tensor Manipulation
-|                           |   PyTorch         |     Tensorflow      |        NumPy       | 
-|---------------------------|-------------------|---------------------|--------------------|
-|                           |   torch.reshape() |     tf.reshape()    |                    |
-|                           |   torch.cat()     |     tf.concat()     |                    |
-|                           |   torch.stack()   |     tf.stack()      |                    |
-|                           |   torch.repeat()  |     tf.tile()      |                    |
 
 ## Indexing
 * tf.gather
@@ -44,7 +45,7 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 |                           |   PyTorch       |     Tensorflow      |        NumPy         |
 |---------------------------|-----------------|---------------------|----------------------|
 |  Gaussian Random Number   | torch.randn()     | tf.random.normal()    |  np.random.normal()    |
-|  Random Integer           | torch.randint()   | tf.random.randint()   |  np.random.randint()   | 
+|  Random Integer           | torch.randint()   | tf.random.randint()   |  np.random.randint()   |
 
 
 
