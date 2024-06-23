@@ -4,6 +4,7 @@
 |                           |   torch.tensor()    |     tf.constant()      |   np.array()       |
 |                           |   torch.full()      |     tf.fill()          |   np.full()        |
 |                           |  torch.from_numpy() | tf.convert_to_tensor() |         -          |
+|                           |  torch.range()      | tf.range()             |  np.arange()       |
 
 
 ```
