@@ -23,12 +23,13 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 
 
 ## Tensor Arithmetic
-|                           |   PyTorch         |     Tensorflow      |        NumPy       |
-|---------------------------|-------------------|---------------------|--------------------|
-|                           |   torch.min()     |    tf.reduce_min()   |                  | 
-|                           |   torch.max()     |    tf.reduce_max()   |                  | 
-|                           |   torch.abs()     |    tf.abs()        |                    |
-|                           |   torch.logaddexp() |    tfp.math.log_add_exp |             |
+|                           |   PyTorch                    |     Tensorflow       |        NumPy       |
+|---------------------------|------------------------------|----------------------|--------------------|
+|                           |   torch.min()                |    tf.reduce_min()   |                    | 
+|                           |   torch.max()                |    tf.reduce_max()   |                    | 
+|                           |   torch.abs()                |    tf.abs()          |                    |
+|                           |   torch.where()              |    tf.where()        |                    |
+|                           |   torch.logaddexp()          | tfp.math.log_add_exp |                    |
 
 
 # Tensor Manipulation
@@ -38,6 +39,7 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 |                            |   torch.reshape()           |     tf.reshape()    |                     |
 |                            |   torch.cat()               |     tf.concat()     |                     |
 |                            |   torch.stack()             |     tf.stack()      |                     |
+|                            |   torch.unbind()            |     tf.unstack()    |                     |
 |                            |   torch.repeat() or<br> torch.tile()    |     tf.tile()       |                     |
 |                            |   torch.unsqueeze()         |     tf.expand_dims()|  np.expand_dims()   |
 
