@@ -6,7 +6,9 @@
 |                           |  torch.from_numpy() | tf.convert_to_tensor() |         -          |
 |                           |  torch.range()      | tf.range()             |  np.arange()       |
 |                           |  torch.zeors()      | tf.zeros()             |  np.zeros()        |
+|                           |  torch.zeors_like() | tf.zeros_like()        |                    |
 |                           |  torch.ones()       | tf.ones()              |  np.ones()         |
+|                           |  torch.ones_like()  | tf.ones_like()         |                    |
 
 
 ```
