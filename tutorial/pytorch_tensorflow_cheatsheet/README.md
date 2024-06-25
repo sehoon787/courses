@@ -9,6 +9,7 @@
 |                           |  torch.zeors_like() | tf.zeros_like()        |                    |
 |                           |  torch.ones()       | tf.ones()              |  np.ones()         |
 |                           |  torch.ones_like()  | tf.ones_like()         |                    |
+|                           |  torch.nn.functional.one_hot  | tf.one_hot()           |                    |
 
 
 ```
