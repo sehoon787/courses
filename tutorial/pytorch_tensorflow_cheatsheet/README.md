@@ -24,16 +24,17 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 |   Number of Dimensions    |   torch.Tensor.dim() |     tf.rank()       |   numpy.ndarray.ndim  |
 |   Shape of a Tensor       |   torch.Tensor.size() or<br> torch.Tensor.shape |     tf.shape() or<br> tf.Tensor.shape    |   numpy.ndarray.shape  |
 
-
+                                                              
 ## Tensor Arithmetic
 |                           |   PyTorch                    |     Tensorflow       |        NumPy       |
-|---------------------------|------------------------------|----------------------|--------------------|
-|                           |   torch.min()                |    tf.reduce_min()   |                    | 
-|                           |   torch.max()                |    tf.reduce_max()   |                    | 
-|                           |   torch.abs()                |    tf.abs()          |                    |
-|                           |   torch.where()              |    tf.where()        |                    |
-|                           |   torch.log_softmax()              |    tf.nn.log_softmax()        |                    |
-|                           |   torch.logaddexp()          | tfp.math.log_add_exp |                    |
+|------------------------------|------------------------------|------------------------------|--------------------|
+|                              |   torch.min()                |    tf.reduce_min()           |                    | 
+|                              |   torch.max()                |    tf.reduce_max()   |                    | 
+|                              |   torch.abs()                |    tf.abs()              |                    |
+|                              |   torch.multiply()           |    tf.math.multiply()       |                    |
+|                              |   torch.where()              |    tf.where()        |                    |
+|                              |   torch.log_softmax()        |    tf.nn.log_softmax()        |                    |
+|                              |   torch.logaddexp()          | tfp.math.log_add_exp |                    |
 
 
 # Tensor Manipulation
