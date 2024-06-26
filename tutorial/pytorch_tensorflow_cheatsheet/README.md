@@ -56,10 +56,11 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 
 ## Random Number
 
-|                           |   PyTorch       |     Tensorflow      |        NumPy         |
-|---------------------------|-----------------|---------------------|----------------------|
-|  Gaussian Random Number   | torch.randn()     | tf.random.normal()    |  np.random.normal()    |
-|  Random Integer           | torch.randint()   | tf.random.randint()   |  np.random.randint()   |
+|                            |   PyTorch                   |     Tensorflow        |        NumPy         |
+|----------------------------|-----------------------------|-----------------------|----------------------|
+|  Random Seed               | torch.manual_seed()         | tf.random.set_seed()  |  np.random.seed()    |
+|  Gaussian Random Number    | torch.randn()     | tf.random.normal()    |  np.random.normal()    |
+|  Random Integer            | torch.randint()   | tf.random.randint()   |  np.random.randint()   |
 
 
 
