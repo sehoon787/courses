@@ -63,6 +63,10 @@ The following is the recommended steps to impelement the `ctc_loss` method in Py
 I will create a PyTorch unit test which is doing the same thing as "seq_loss_util_test.py" to check whether your code passes the unit test.
 
 
+The following page shows a desription about how to use a custom loss with HuggingFace.
+https://medium.com/deeplearningmadeeasy/how-to-use-a-custom-loss-with-hugging-face-fc9a1f91b39b
+
+
 
 ## 2) Phase-II
 Phase-II is the optional phase, but students will the get extra 15% of points if he or she completes this phase.
