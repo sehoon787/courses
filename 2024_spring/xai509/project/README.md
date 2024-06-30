@@ -85,8 +85,23 @@ But unlike 604 project, you will only use the speech recogniton part.
 ```
 from transformers import Trainer
 
-class MyTrainer(Trainer):
-    def compute_loss(self, model, inputs):
-        ctc_loss = ... your ctc loss ...
-        return ctc_loss
+ class MyTrainer(Trainer):
+     def compute_loss(self, model, inputs, return_outputs=False):
+         target = inputs.pop("labels")
+         outputs = model(**inputs)
+ 
+         # In torch.nn.CTCLoss(), the logit should have the shape of (T, B, C).
+         logits = torch.permute(outputs["logits"], (1, 0, 2))
+         logits_lengths = torch.full(size=(logits.shape[1],), fill_value=logits.shape[0])
+         target_lengths = torch.sum((target >= 0).type(torch.int32), axis=1)
+ 
+         ctc_loss = torch.nn.CTCLoss()
+ 
+         loss = ctc_loss(logits.log_softmax(2), target, logits_lengths, target_lengths)
+ 
+         if return_outputs:
+             return loss, outputs
+         else:
+             return loss
+
 ```
