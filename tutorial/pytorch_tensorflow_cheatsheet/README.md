@@ -32,6 +32,7 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 |                              |   torch.max()                |    tf.reduce_max()   |                    | 
 |                              |   torch.abs()                |    tf.abs()              |                    |
 |                              |   torch.multiply()           |    tf.math.multiply()       |                    |
+|                              |   torch.log()                |    tf.math.log()       |                    |
 |                              |   torch.where()              |    tf.where()        |                    |
 |                              |   torch.softmax()            |    tf.nn.softmax()   |                    |
 |                              |   torch.log_softmax()        |    tf.nn.log_softmax()        |                    |
