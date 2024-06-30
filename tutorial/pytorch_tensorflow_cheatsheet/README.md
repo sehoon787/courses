@@ -33,11 +33,11 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 |                              |   torch.abs()                |    tf.abs()              |                    |
 |                              |   torch.multiply()           |    tf.math.multiply()       |                    |
 |                              |   torch.log()                |    tf.math.log()       |                    |
-|                              |   torch.where()              |    tf.where()        |                    |
 |                              |   torch.softmax()            |    tf.nn.softmax()   |                    |
 |                              |   torch.log_softmax()        |    tf.nn.log_softmax()        |                    |
 |                              |   torch.logaddexp()          | tfp.math.log_add_exp |                    |
-
+|                              |   torch.where()              |    tf.where()        |                    |
+|                              |   torch.greater_equal()      |    tf.math.greater_equal()    |                    |
 
 # Tensor Manipulation
 |                            |   PyTorch                   |     Tensorflow      |        NumPy        |
