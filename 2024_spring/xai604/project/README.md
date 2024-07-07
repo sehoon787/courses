@@ -55,8 +55,8 @@ https://bazel.build/install/ubuntu
 
 # 3. STOP dataset
 
-We used the music portion.
-But we removed 00011525.wav.
+We used the music portion of the STOP train set.
+However, we removed 00011525.wav, since the transcript of it seems to contain an error: "play song TITLE_MEDIA on spotify"
 You may download the compressed sharded TFRecord from the following directory:
 https://drive.google.com/file/d/1FUrwZzeZ8S1su9MPaQVu4WDswM2AjPxG/view?usp=drive_link
 
