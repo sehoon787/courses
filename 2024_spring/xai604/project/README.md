@@ -28,7 +28,7 @@ Note that torchdata is added.
 
 Install HuggingFace **Transformers** and **Datasets**.
 \
-`pip install transformers datasets`
+`pip install transformers[torch] datasets`
 
 SoundFile installation
 \
@@ -72,10 +72,10 @@ If GPU0 is available, then set the following configuration variables:
 `export NCCL_P2P_DISABLE=1; export NCCL_IB_DISABLE=1; export CUDA_VISIBLE_DEVICES=0`
 
 
-`bazel run :wav2vec_training`
+`bazel run :wav2vec_finetuning`
 \
 `bazel run :wav2vec_inference`
 \
-`bazel run :bert_training`
+`bazel run :bert_finetuning`
 \
 `bazel run :bert_inference`
