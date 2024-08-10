@@ -29,7 +29,8 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 |                           |   PyTorch                    |     Tensorflow       |        NumPy       |
 |------------------------------|------------------------------|------------------------------|--------------------|
 |                              |   torch.min()                |    tf.reduce_min()           |                    | 
-|                              |   torch.max()                |    tf.reduce_max()   |                    | 
+|                              |   torch.max()                |    tf.reduce_max()           |                    | 
+|                              |   torch.argmax()             |    tf.math.argmax()           |                    | 
 |                              |   torch.maximum()            |    tf.math.maximum()   |                    | 
 |                              |   torch.abs()                |    tf.abs()              |                    |
 |                              |   torch.multiply()           |    tf.math.multiply()       |                    |
