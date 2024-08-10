@@ -51,7 +51,7 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 |                            |   torch.unbind()            |     tf.unstack()    |                     |
 |                            |   torch.permute()           |     tf.permute()    |                     |
 |                            |   torch.repeat() or<br> torch.tile()    |     tf.tile()       |                     |
-|                            |   torch.unsqueeze() or<br> torch.expand()        |     tf.expand_dims()|  np.expand_dims()   |
+|                            |   torch.unsqueeze() or<br> torch.view()        |     tf.expand_dims()|  np.expand_dims()   |
 
 
 ## Indexing
