@@ -24,14 +24,14 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 |   Number of Dimensions    |   torch.Tensor.dim() |     tf.rank()       |   numpy.ndarray.ndim  |
 |   Shape of a Tensor       |   torch.Tensor.size() or<br> torch.Tensor.shape |     tf.shape() or<br> tf.Tensor.shape    |   numpy.ndarray.shape  |
 
-                                                              
+
 ## Tensor Arithmetic
 |                           |   PyTorch                    |     Tensorflow       |        NumPy       |
 |------------------------------|------------------------------|------------------------------|--------------------|
-|                              |   torch.min()                |    tf.reduce_min()           |                    | 
-|                              |   torch.max()                |    tf.reduce_max()           |                    | 
-|                              |   torch.argmax()             |    tf.math.argmax()           |                    | 
-|                              |   torch.maximum()            |    tf.math.maximum()   |                    | 
+|                              |   torch.min()                |    tf.reduce_min()           |                    |
+|                              |   torch.max()                |    tf.reduce_max()           |                    |
+|                              |   torch.argmax()             |    tf.math.argmax()           |                    |
+|                              |   torch.maximum()            |    tf.math.maximum()   |                    |
 |                              |   torch.abs()                |    tf.abs()              |                    |
 |                              |   torch.multiply()           |    tf.math.multiply()       |                    |
 |                              |   torch.log()                |    tf.math.log()       |                    |
@@ -66,6 +66,7 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 |----------------------------|-----------------------------|-----------------------|----------------------|
 |  Random Seed               | torch.manual_seed()         | tf.keras.utils.set_random_seed() <br> tf.random.set_seed()  |  np.random.seed()    |
 |  Gaussian Random Number    | torch.randn()     | tf.keras.random.normal() <br> tf.random.normal()    |  np.random.normal()    |
+|  Uniform Random Number     | torch.rand()      | tf.keras.random.uniform() <br>  tf.random.uniform() | np.random.uniform() |
 |  Random Integer            | torch.randint()   | tf.keras.random.randint()   |  np.random.randint()   |
 
 
