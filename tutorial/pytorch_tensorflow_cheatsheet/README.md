@@ -64,9 +64,9 @@ t1 = tf.constant(np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]))
 
 |                            |   PyTorch                   |     Tensorflow        |        NumPy         |
 |----------------------------|-----------------------------|-----------------------|----------------------|
-|  Random Seed               | torch.manual_seed()         | tf.random.set_seed()  |  np.random.seed()    |
-|  Gaussian Random Number    | torch.randn()     | tf.random.normal()    |  np.random.normal()    |
-|  Random Integer            | torch.randint()   | tf.random.randint()   |  np.random.randint()   |
+|  Random Seed               | torch.manual_seed()         | tf.keras.utils.set_random_seed() <br> tf.random.set_seed()  |  np.random.seed()    |
+|  Gaussian Random Number    | torch.randn()     | tf.keras.random.normal() <br> tf.random.normal()    |  np.random.normal()    |
+|  Random Integer            | torch.randint()   | tf.keras.random.randint()   |  np.random.randint()   |
 
 
 
