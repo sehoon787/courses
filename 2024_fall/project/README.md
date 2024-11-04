@@ -27,6 +27,8 @@ Note that torchdata is added.
 `pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121`
 \
 `conda install tensorflow`
+\
+`pip3 install ai-edge-torch`
 
 Install HuggingFace **Transformers** and **Datasets**.
 \
