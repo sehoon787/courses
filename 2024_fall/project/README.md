@@ -16,15 +16,17 @@ https://pytorch.org/get-started/locally/
 Check the CUDA version
 \
 `nvcc --version`
+\
+'nvidia-smi'
 
 Select the command at the bottom of the table, after seleting the right "Compute Platform"
 For example, if the CUDA version is 11.8, then run the following command:
 Note that torchdata is added.
 
 
-`conda install pytorch torchvision torchaudio torchdata pytorch-cuda=11.8 -c pytorch -c nvidia`
+`pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121`
 \
-`conda install tensorflow-cpu`
+`conda install tensorflow`
 
 Install HuggingFace **Transformers** and **Datasets**.
 \
