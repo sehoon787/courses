@@ -29,7 +29,7 @@ Note that torchdata is added.
 
 Install HuggingFace **Transformers** and **Datasets**.
 \
-`pip install transformers datasets`
+`conda install -c huggingface -c conda-forge transformers datasets`
 
 SoundFile installation
 \
