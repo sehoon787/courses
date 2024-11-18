@@ -3,20 +3,17 @@
 
 Create the Conda environment.
 
-`conda create --name py3_10_hf python=3.10`
+`conda create --name py3_10_llm python=3.10`
 
 Activate the Conda environment created just ago.
 
-`conda activate py3_10_hf`
+`conda activate py3_10_llm`
 
 
 Install Pytorch and Tensorflow.
 
 https://pytorch.org/get-started/locally/
-Check the CUDA version
-\
-`nvcc --version`  (CUDA run-time API version)
-\
+Check the highest CUDA version the driver can support using the nvidia-smi command:
 `nvidia-smi` (CUDA driver version)
 
 Select the command at the bottom of the table, after seleting the right "Compute Platform"
