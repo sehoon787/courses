@@ -31,7 +31,7 @@ Install HuggingFace **Transformers** and **Datasets**.
 \
 `conda install conda-forge::transformers`
 \
-`conda install -c huggingface -c conda-forge datasets`
+`conda install -c conda-forge transformers datasets accelerate`
 
 SoundFile installation
 \
