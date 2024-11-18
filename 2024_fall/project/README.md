@@ -14,14 +14,14 @@ Install Pytorch and Tensorflow.
 
 https://pytorch.org/get-started/locally/
 Check the highest CUDA version the driver can support using the nvidia-smi command:
+\
 `nvidia-smi` (CUDA driver version)
 
 Select the command at the bottom of the table, after seleting the right "Compute Platform"
 For example, if the CUDA version is 11.8, then run the following command:
 Note that torchdata is added.
 
-
-`pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121`
+`conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia`
 \
 `conda install tensorflow`
 \
