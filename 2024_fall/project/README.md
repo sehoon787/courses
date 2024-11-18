@@ -13,12 +13,12 @@ Activate the Conda environment created just ago.
 Install Pytorch and Tensorflow.
 
 https://pytorch.org/get-started/locally/
-Check the highest CUDA version the driver can support using the nvidia-smi command:
+Check the highest CUDA version the driver can support using the **nvidia-smi** command:
 \
 `nvidia-smi` (CUDA driver version)
 
 Select the command at the bottom of the table, after seleting the right "Compute Platform"
-For example, if the CUDA version is 11.8, then run the following command:
+For example, if the CUDA version is 12.1, then run the following command:
 Note that torchdata is added.
 
 `conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia`
@@ -29,7 +29,9 @@ Note that torchdata is added.
 
 Install HuggingFace **Transformers** and **Datasets**.
 \
-`conda install -c huggingface -c conda-forge transformers datasets`
+`conda install conda-forge::transformers`
+\
+`conda install -c huggingface -c conda-forge datasets`
 
 SoundFile installation
 \
