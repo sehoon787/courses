@@ -1,11 +1,21 @@
 # Creating the Conda environment
-1. Create the conda environment. 
+1. Installing Conda
+Refer to the following page.
+https://docs.conda.io/projects/conda/en/stable/user-guide/install/linux.html
+
+We recommend to install Miniconda not Anaconda.
+
+About the Miniconda installation guide, please refer to the following page.
+https://www.anaconda.com/docs/getting-started/miniconda/install#quickstart-install-instructions
+
+
+2. Create the conda environment. 
 
 ```
 conda create --name py3_13_xai604 python=3.13
 ```
 
-2. Activate the Conda environment created just ago.
+3. Activate the Conda environment created just ago.
 
 ```
 conda activate py3_13_xai604
@@ -19,7 +29,7 @@ Also, the following cheat sheet may be quite useful.
 https://docs.conda.io/projects/conda/en/stable/user-guide/cheatsheet.html
 
 
-3. Install Pytorch and Tensorflow.
+4. Install Pytorch and Tensorflow.
 
 https://pytorch.org/get-started/locally/ 
 
