@@ -1,14 +1,23 @@
 # Creating the Conda environment
+1. Create the conda environment. 
 
 ```
 conda create --name py3_13_xai604 python=3.13
 ```
 
-Activate the Conda environment created just ago.
+2. Activate the Conda environment created just ago.
 
 ```
 conda activate py3_13_xai604
 ```
+
+For more information about Conda, please refer to the following page:
+https://docs.conda.io/en/latest/
+
+
+Also, the following cheat sheet may be quite useful.
+https://docs.conda.io/projects/conda/en/stable/user-guide/cheatsheet.html
+
 
 Install Pytorch and Tensorflow.
 
