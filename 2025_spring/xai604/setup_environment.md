@@ -33,7 +33,7 @@ cf. Note that the version mentioned by nvidia-smi may be different from the vers
 Select the command at the bottom of the table, after seleting the right "Compute Platform" For example, if the CUDA version is 11.8, then run the following command: Note that torchdata is added.
 
 ![Pytorch install](./pytorch_install.png)
-<img src="./pytorch_install.png" width="500px" height="250px" title="Github_Logo"></img>
+<img src="./pytorch_install.png" width="413px" height="204px" title="Github_Logo"></img>
 
 conda install pytorch torchvision torchaudio torchdata pytorch-cuda=11.8 -c pytorch -c nvidia
 conda install tensorflow-cpu
