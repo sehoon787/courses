@@ -25,8 +25,10 @@ https://pytorch.org/get-started/locally/
 
 You may check the CUDA version by running the following command.
 ```
-nvcc --version
+nvidia-smi
 ```
+You can find the latest CUDA version supported by the GPU driver in the upper right corner of the screen.
+cf. Note that the version mentioned by nvidia-smi may be different from the version pointed by nvcc --version. You may install Pytorch based on "nvidia-smi".
 
 Select the command at the bottom of the table, after seleting the right "Compute Platform" For example, if the CUDA version is 11.8, then run the following command: Note that torchdata is added.
 
