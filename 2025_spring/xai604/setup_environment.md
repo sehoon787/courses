@@ -19,10 +19,14 @@ Also, the following cheat sheet may be quite useful.
 https://docs.conda.io/projects/conda/en/stable/user-guide/cheatsheet.html
 
 
-Install Pytorch and Tensorflow.
+3. Install Pytorch and Tensorflow.
 
-https://pytorch.org/get-started/locally/ Check the CUDA version
+https://pytorch.org/get-started/locally/ 
+
+You may check the CUDA version by running the following command.
+```
 nvcc --version
+```
 
 Select the command at the bottom of the table, after seleting the right "Compute Platform" For example, if the CUDA version is 11.8, then run the following command: Note that torchdata is added.
 
