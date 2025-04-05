@@ -1,10 +1,14 @@
-# Create the Conda environment.
+# Creating the Conda environment
 
-conda create --name py3_10_hf python=3.10
+```
+conda create --name py3_13_xai604 python=3.13
+```
 
 Activate the Conda environment created just ago.
 
-conda activate py3_10_hf
+```
+conda activate py3_13_xai604
+```
 
 Install Pytorch and Tensorflow.
 
