@@ -76,3 +76,17 @@ For speech recognition evaluation
 pip install evaluate jiwer
 
 Reference: https://huggingface.co/docs/datasets/v1.11.0/installation.html
+
+## 4. Installing Tensorflow
+
+Run the following comand
+```
+pip install tensorflow
+```
+To check whether it correctly uses the GPU, type the following command:
+```
+python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+```
+
+
+
