@@ -12,8 +12,8 @@ About the Miniconda installation guide, please refer to the following page.
 https://www.anaconda.com/docs/getting-started/miniconda/install#quickstart-install-instructions
 
 
-## 2. Create the conda environment. 
-
+## 2. Create a Conda environment. 
+e
 Once Conda is installed, you may run the following command to create a Conda environment for this class.
 
 ```
