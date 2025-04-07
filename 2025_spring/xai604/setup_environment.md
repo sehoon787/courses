@@ -12,7 +12,7 @@ About the Miniconda installation guide, please refer to the following page.
 https://www.anaconda.com/docs/getting-started/miniconda/install#quickstart-install-instructions
 
 
-## 2. Create a Conda environment. 
+## 2. Creating a Conda environment
 e
 Once Conda is installed, you may run the following command to create a Conda environment for this class.
 
@@ -20,7 +20,7 @@ Once Conda is installed, you may run the following command to create a Conda env
 conda create --name py3_13_xai604 python=3.13
 ```
 
-## 3. Activate the Conda environment created just ago.
+## 3. Activating the Conda environment created just ago
 
 ```
 conda activate py3_13_xai604
