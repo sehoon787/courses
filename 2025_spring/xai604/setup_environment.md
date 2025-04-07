@@ -1,5 +1,5 @@
 # Creating the Conda environment
-1. Installing Conda
+##1. Installing Conda
    
 Refer to the following page.
 
