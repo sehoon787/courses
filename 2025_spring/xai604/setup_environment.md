@@ -1,6 +1,6 @@
 # Creating the Conda environment
 1. Installing Conda
-2. 
+   
 Refer to the following page.
 https://docs.conda.io/projects/conda/en/stable/user-guide/install/linux.html
 
