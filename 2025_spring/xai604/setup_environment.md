@@ -4,7 +4,7 @@
 Refer to the following page.
 https://docs.conda.io/projects/conda/en/stable/user-guide/install/linux.html
 
-We recommend to install Miniconda not Anaconda.
+We recommend installing Miniconda instead of Anaconda, since Anaconda comes with many extra packages that you may not need.
 
 About the Miniconda installation guide, please refer to the following page.
 https://www.anaconda.com/docs/getting-started/miniconda/install#quickstart-install-instructions
