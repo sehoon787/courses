@@ -34,7 +34,9 @@ Also, the following cheat sheet may be quite useful.
 https://docs.conda.io/projects/conda/en/stable/user-guide/cheatsheet.html
 
 
-## 4. Install Pytorch and Tensorflow.
+## 4. Installing Pytorch and Tensorflow
+
+Visit the following website to find information about installing PyTorch.
 
 https://pytorch.org/get-started/locally/ 
 
@@ -49,6 +51,12 @@ Select the command at the bottom of the table, after seleting the right "Compute
 
 
 <img src="./pytorch_install.png" title="Github_Logo"></img>
+
+As of Apri 2024, if we select CUDA version 12.4, Linux, Pip, then we may use the following command. 
+```
+pip3 install torch torchvision torchaudio
+```
+
 
 conda install pytorch torchvision torchaudio torchdata pytorch-cuda=11.8 -c pytorch -c nvidia
 conda install tensorflow-cpu
