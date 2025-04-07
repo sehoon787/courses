@@ -14,6 +14,8 @@ https://www.anaconda.com/docs/getting-started/miniconda/install#quickstart-insta
 
 ## 2. Create the conda environment. 
 
+Once Conda is installed, you may run the following command to create a Conda environment for this class.
+
 ```
 conda create --name py3_13_xai604 python=3.13
 ```
