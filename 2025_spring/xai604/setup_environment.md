@@ -25,7 +25,7 @@ Note that Tensorflow does not support Python 3.13 yet as of Apr. 2025.
 ## 3. Activating the Conda environment created just ago
 
 ```
-conda activate py3_13_xai604
+conda activate py3_12_xai604
 ```
 
 For more information about Conda, please refer to the following page:
