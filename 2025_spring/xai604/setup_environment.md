@@ -17,15 +17,15 @@ e
 Once Conda is installed, you may run the following command to create a Conda environment for this class.
 
 ```
-conda create --name py3_12_xai604 python=3.12
+conda create --name py3_11_xai604 python=3.11
 ```
 
-Note that Tensorflow does not support Python 3.13 yet as of Apr. 2025.
+Note that Tensorflow does not support a Python verion >=3.12 yet as of Apr. 2025.
 
 ## 3. Activating the Conda environment created just ago
 
 ```
-conda activate py3_12_xai604
+conda activate py3_11_xai604
 ```
 
 For more information about Conda, please refer to the following page:
