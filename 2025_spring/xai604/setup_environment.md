@@ -13,7 +13,7 @@ https://www.anaconda.com/docs/getting-started/miniconda/install#quickstart-insta
 
 
 ## 2. Creating a Conda environment
-e
+
 Once Conda is installed, you may run the following command to create a Conda environment for this class.
 
 ```
