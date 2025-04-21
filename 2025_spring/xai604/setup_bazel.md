@@ -8,10 +8,6 @@ We recommend that you use Bazelisk on Linux Ubuntu.
 Refer to the following page regarding the installation procedure:
 https://github.com/bazelbuild/bazelisk
 
-
-About the Miniconda installation guide, please refer to the following page:
-https://www.anaconda.com/docs/getting-started/miniconda/install#quickstart-install-instructions
-
 More specifically, you may download **bazelisk-linux-amd64** from the following page:
 https://github.com/bazelbuild/bazelisk/releases
 
