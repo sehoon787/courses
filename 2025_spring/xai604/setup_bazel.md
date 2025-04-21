@@ -22,15 +22,12 @@ https://bazel.build/install
 
 We recommend that you use Bazelisk on Linux Ubuntu.
 
-Refer to the following page regarding the installation procedure:
+Refer to the following page regarding the entire installation procedure:
 https://github.com/bazelbuild/bazelisk
 
 
-
-
-You will download bazelisk in the above dicrectory.
-
-More specifically, you may download **bazelisk-linux-amd64** from the following page to $HOME/bin:
+Download  **bazelisk** in mentioned in the above website.
+More specifically, you may download **bazelisk-linux-amd64** from the following page to ~/bin:
 https://github.com/bazelbuild/bazelisk/releases
 
 Create a symbolic link by running the following command:
