@@ -7,7 +7,7 @@ Create the **personal bin** directory by running the following command:
 ```
 mkdir -p ~/bin
 ```
-Include this **personal bin** directory to searchable path by adding the following lines in **.profile**.
+Include this **personal bin** directory to searchable path by adding the following lines in **.profile**. 
 Often, it has been already added to $PATH, so if this is the case, then you may skip this step:
 ```
 # set PATH so it includes user's private bin if it exists
