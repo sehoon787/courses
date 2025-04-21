@@ -8,8 +8,23 @@ We recommend that you use Bazelisk on Linux Ubuntu.
 Refer to the following page regarding the installation procedure:
 https://github.com/bazelbuild/bazelisk
 
-More specifically, you may download **bazelisk-linux-amd64** from the following page:
+Create the **personal** bin directory by running the following command:
+```
+mkdir -p ~/bin
+```
+You will download bazelisk in the above dicrectory.
+
+More specifically, you may download **bazelisk-linux-amd64** from the following page to $HOME/bin:
 https://github.com/bazelbuild/bazelisk/releases
+
+Create a symbolic link by running the following command:
+```
+ln -s  ~/bin/bazelisk-linux-amd64 ~/bin/bazel
+```
+
+
+
+
 
 
 2. Create the conda environment. 
