@@ -1,5 +1,5 @@
 # Installing bazel with Tensorflow and PyTorch.
-1. Installing Bazel
+# 1. Installing Bazel
 Refer to the following page:
 https://bazel.build/install
 
