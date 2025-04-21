@@ -1,5 +1,22 @@
 # Installing bazel with Tensorflow and PyTorch.
-# 1. Installing Bazel
+
+# 1. Creating a Personal Directory
+First, we will a **personal bin** directory where bazel will be located, and will add this path to $PATH.
+
+Create the **personal bin** directory by running the following command:
+```
+mkdir -p ~/bin
+```
+Include this **personal bin** directory to searchable path by adding the following lines in **.profile**.
+Often, it has been already added to $PATH, so if this is the case, then you may skip this step:
+```
+# set PATH so it includes user's private bin if it exists
+ if [ -d "$HOME/bin" ] ; then
+     PATH="$HOME/bin:$PATH"
+ fi
+```
+
+# 2. Installing Bazel
 Refer to the following page:
 https://bazel.build/install
 
@@ -8,10 +25,9 @@ We recommend that you use Bazelisk on Linux Ubuntu.
 Refer to the following page regarding the installation procedure:
 https://github.com/bazelbuild/bazelisk
 
-Create the **personal bin** directory by running the following command:
-```
-mkdir -p ~/bin
-```
+
+
+
 You will download bazelisk in the above dicrectory.
 
 More specifically, you may download **bazelisk-linux-amd64** from the following page to $HOME/bin:
