@@ -8,7 +8,7 @@ We recommend that you use Bazelisk on Linux Ubuntu.
 Refer to the following page regarding the installation procedure:
 https://github.com/bazelbuild/bazelisk
 
-Create the **personal** bin directory by running the following command:
+Create the **personal bin** directory by running the following command:
 ```
 mkdir -p ~/bin
 ```
