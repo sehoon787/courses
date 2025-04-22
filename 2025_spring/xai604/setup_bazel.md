@@ -30,16 +30,50 @@ Download  **bazelisk** in mentioned in the above website.
 More specifically, you may download **bazelisk-linux-amd64** from the following page to ~/bin:
 https://github.com/bazelbuild/bazelisk/releases
 
-Create a symbolic link by running the following command:
+
+# 3. Making a Bazel Wrapper Script to Use a Local Conda Environment.
+
+
+One of the philosophical objectives of **Bazel** is hermeticity, which means that the build 
+system is independent of the local environment. This property is important for achieving reproducibility.
+If the Bazel build process still relies on a local conda environment, it breaks this hermeticity, and reproducibility is not guaranteed in other environments.
+However, relying solely on configuration from files like MODULE.bazel can sometimes lead to overly large and heavyweight setups. It might take very long time in initial build since it requires downloading and installing a lot of modules. If we use the **Conda** local virtual environment, even though it breaks hemeticity a little bit, build efficiency becomes better.
+So, we will use the following bazel wrapper, which provides **--python_path** and **--test_env**. 
+
+
+Go to **~/bin**:
 ```
-ln -s  ~/bin/bazelisk-linux-amd64 ~/bin/bazel
+cd ~/bin
 ```
 
-After everthing is done, go to any directory that is "~/bin", and run the following command:
+Create a text file **bazel** in this directory using a text editor:
 ```
-bazel
+ #!/bin/bash
+
+ PYTHONBIN=$(python -c "import sys; print(sys.executable)")
+ PYTHONPATH=$(python -c "import site; print(site.getsitepackages()[0])")
+
+ bazelisk-linux-amd64 "$@" \
+   --python_path="$PYTHONBIN" \
+   --test_env=PYTHONPATH="$PYTHONPATH"
+```
+
+Changes the mod so that it can be executed:
+```
+chmod 755 ~/bin/bazel
+
+```
+
+You may find reference about command-line arguments of **Bazel** in the following page:
+https://bazel.build/reference/command-line-reference
+
+# 4. Testing whether it is installed correctly.
+
+Before proceeding, first activate your conda environment. For example, if your conda environment is
+**py3_11_xai604**, run the following command:
+```
+conda activate py3_11_xai604
 ```
 
 If your scrren out is similar to the following screen shot, then **bazel** is installed correctly.
 <img src="./run_bazel.png" title="Github_Logo"></img>
-
