@@ -1,4 +1,4 @@
-# Creating the Conda environment
+# Installing PyTorch and Tensorflow in a Conda Environment
 ## 1. Installing Conda
    
 Refer to the following page.
