@@ -88,5 +88,13 @@ To check whether it correctly uses the GPU, type the following command:
 python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
 ```
 
+## 5. Installing Other Recommended Tools
+
+TODO(chanwcom) Check the requirement.
+
+```
+conda insall numpy
+```
+
 
 
