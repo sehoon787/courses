@@ -57,22 +57,29 @@ cf. Note that the version mentioned by nvidia-smi may be different from the vers
 
 ### 4.2 Select the maximum CUDA version supported by PyTorch the following page:
 
-
-### 4.3 Select the maximum CUDA version supported by Tensorflow from the following page:
-
-
-## 4. Installing Pytorch and Tensorflow
-
 Visit the following website to find information about installing PyTorch.
 
 https://pytorch.org/get-started/locally/ 
 
-
-
 Select the command at the bottom of the table, after seleting the right "Compute Platform" For example, if the CUDA version is 12.4, then run the following command: Note that torchdata is added.
 
-
 <img src="./pytorch_install.png" title="Github_Logo"></img>
+
+If you cannot find a suitable CUDA version, you may choose from one of the previus versions
+
+https://pytorch.org/get-started/previous-versions/
+
+
+### 4.3 Select the maximum CUDA version supported by Tensorflow from the following page:
+
+https://www.tensorflow.org/install/source#gpu
+
+Note that the CUDA version corresponding to PyTorch and TensorFlow should be the same.
+
+
+## 5. Installing Pytorch and Tensorflow
+
+
 
 As of Apri 2024, if we select CUDA version 12.4, Linux, Pip, then we may use the following command. 
 ```
