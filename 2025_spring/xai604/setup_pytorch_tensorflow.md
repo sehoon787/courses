@@ -35,12 +35,18 @@ https://docs.conda.io/en/latest/
 Also, the following cheat sheet may be quite useful.
 https://docs.conda.io/projects/conda/en/stable/user-guide/cheatsheet.html
 
+## 4. Selecting a suitable CUDA version.
 
-## 4. Installing Pytorch and Tensorflow
+In our setup, we will install PyTorch and TensorFlow in the same Conda environment. To do this, 
+we need to select a suitable CUDA version. The requiremenit is the following:
 
-Visit the following website to find information about installing PyTorch.
+1. s
+2. 
+3. s
 
-https://pytorch.org/get-started/locally/ 
+
+
+### 4.1 Select the maximum CUDA version supported by the GPU driver
 
 You may check the CUDA version by running the following command.
 ```
@@ -48,6 +54,20 @@ nvidia-smi
 ```
 You can find the latest CUDA version supported by the GPU driver in the upper right corner of the screen.
 cf. Note that the version mentioned by nvidia-smi may be different from the version pointed by nvcc --version. You may install Pytorch based on "nvidia-smi".
+
+### 4.2 Select the maximum CUDA version supported by PyTorch the following page:
+
+
+### 4.3 Select the maximum CUDA version supported by Tensorflow from the following page:
+
+
+## 4. Installing Pytorch and Tensorflow
+
+Visit the following website to find information about installing PyTorch.
+
+https://pytorch.org/get-started/locally/ 
+
+
 
 Select the command at the bottom of the table, after seleting the right "Compute Platform" For example, if the CUDA version is 12.4, then run the following command: Note that torchdata is added.
 
