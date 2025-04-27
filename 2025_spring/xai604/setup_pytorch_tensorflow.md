@@ -11,6 +11,10 @@ About the Miniconda installation guide, please refer to the following page.
 
 https://www.anaconda.com/docs/getting-started/miniconda/install#quickstart-install-instructions
 
+If you install on Linux, please the "Linux" tab from the above page.
+
+TODO(chancom) Adds screen shot.
+
 
 ## 2. Creating a Conda environment
 
