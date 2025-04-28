@@ -30,6 +30,8 @@ def create_webdataset_from_flac(input_dir, output_tar, suffix=".flac"):
                 tar.add(txt_file, arcname=f"{key}.txt")
 
     print(f"Created WebDataset tar: {output_tar}")
+```
+```
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Pack FLAC files into a WebDataset tar.")
     parser.add_argument("--input_dir", type=str, required=True, help="Directory with .flac files (and optional .txt)")
