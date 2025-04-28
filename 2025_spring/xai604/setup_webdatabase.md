@@ -5,10 +5,9 @@
 https://github.com/webdataset/webdataset/blob/main/examples/wds-notes.ipynb
 
 https://huggingface.co/datasets/openslr/librispeech_asr
-- ```
-  
-  
-  import os
+-
+```
+import os
 import tarfile
 from pathlib import Path
 import argparse
