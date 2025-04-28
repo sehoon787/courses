@@ -34,6 +34,7 @@ def create_webdataset_from_flac(input_dir, output_tar, suffix=".flac"):
 if __name__ == "__main__":
 ```
 
+
 if :
     parser = argparse.ArgumentParser(description="Pack FLAC files into a WebDataset tar.")
     parser.add_argument("--input_dir", type=str, required=True, help="Directory with .flac files (and optional .txt)")
