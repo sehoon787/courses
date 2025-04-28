@@ -3,6 +3,8 @@
 
 
 https://github.com/webdataset/webdataset/blob/main/examples/wds-notes.ipynb
+
+https://huggingface.co/datasets/openslr/librispeech_asr
 - ```
   
   
