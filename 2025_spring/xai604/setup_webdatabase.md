@@ -1,6 +1,8 @@
 - https://github.com/webdataset/webdataset
 - https://pytorch.org/data/0.7/generated/torchdata.datapipes.iter.WebDataset.html
 
+
+https://github.com/webdataset/webdataset/blob/main/examples/wds-notes.ipynb
 - ```
   
   
