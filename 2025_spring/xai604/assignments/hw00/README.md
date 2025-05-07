@@ -1,6 +1,6 @@
 # HW00
 
-##Please use Python 3 and PyTorch version > 2.4.
+## Please use Python 3 and PyTorch version > 2.4.
 
 ### Due Date May 21st, 2025
 
