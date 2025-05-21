@@ -90,7 +90,8 @@ class SeqLossUtilTest(unittest.TestCase):
         # yapf: enable
 
         # Computes transition allowance matrix
-        actual = ctc_loss_lib.label_trans_allowance_table(labels, labels_len, seq_loss_util.LabelType.CTC)
+        actual = ctc_loss_lib.label_trans_allowance_table(
+            labels, labels_len, ctc_loss_lib.LabelType.CTC)
 
         expected = torch.tensor(
             [[[  0.0,   0.0, LOG_0, LOG_0, LOG_0, LOG_0, LOG_0],
@@ -144,7 +145,7 @@ class SeqLossUtilTest(unittest.TestCase):
         softmax_output = torch.softmax(torch.tensor(logits), dim=2)
 
         # Computes actual log-probability of each label
-        actual_output = seq_loss_util.calculate_log_label_prob(
+        actual_output = ctc_loss_lib.calculate_log_label_prob(
             labels, softmax_output)
 
         # Expected manually-computed log-probability tensor
@@ -217,7 +218,7 @@ class SeqLossUtilTest(unittest.TestCase):
         logits_len = torch.tensor([6, 5, 4])
 
         # Computes alpha, beta, and final sequence probability
-        alpha, beta, log_seq_prob_final = seq_loss_util.calculate_alpha_beta(
+        alpha, beta, log_seq_prob_final = ctc_loss_lib.calculate_alpha_beta(
             label_trans_allowance_table_ctc,
             log_pred_label_prob,
             labels_len,
