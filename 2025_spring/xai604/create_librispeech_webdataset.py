@@ -92,7 +92,9 @@ def estimate_total_size(data_pairs):
         total_size += len(transcript.encode("utf-8"))
     return total_size
 
-def write_shards(data_pairs, output_dir, shard_size_gb):
+def write_shards(data_pairs: List[Tuple[str, str]],
+                 output_dir: str,
+                 shard_size_gb: float):
     """Writes (FLAC, transcript) pairs into WebDataset shards.
 
     Args:
