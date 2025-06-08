@@ -32,7 +32,7 @@ import numpy as np
 # Custom imports
 
 
-def random_lines_from_file_stream_sorted(file_path, l):
+def random_lines_from_file_stream_sorted(file_path: str, l: int):
     """Print l random lines from a text file without loading entire file.
 
     Reads the file twice: first to count lines, second to print selected lines
