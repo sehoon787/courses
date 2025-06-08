@@ -27,6 +27,7 @@ def estimate_total_size(data_pairs):
     for flac_path, meta in tqdm(data_pairs, desc="Estimating total size"):
         total_size += os.path.getsize(flac_path)
         total_size += len(json.dumps(meta, ensure_ascii=False).encode("utf-8"))
+
     return total_size
 
 def load_json_schema(schema_path):
@@ -188,16 +189,18 @@ def create_webdataset(audio_dir, output_dir, schema_path, shard_size_gb=1.0):
     schema = load_json_schema(schema_path)
     os.makedirs(output_dir, exist_ok=True)
 
-    shard_id = 0
     current_size = 0
     sink = None
 
     # Find manifest.tsv under audio_dir
-    audio_dir_path = Path(args.audio_dir)
+    audio_dir_path = Path(audio_dir)
     tsv_files = list(audio_dir_path.glob("*.tsv"))
     if len(tsv_files) != 1:
         raise FileNotFoundError(f"Expected exactly one .tsv file in {audio_dir_path}, found {len(tsv_files)}")
     manifest_path = str(tsv_files[0])
+
+    shard_path = os.path.join(output_dir, "shard-%06d.tar")
+    sink = wds.ShardWriter(shard_path, maxsize=shard_size_gb * BYTES_PER_GB)
 
     with open(manifest_path, "r", encoding="utf-8") as file_:
         for line in file_:
@@ -206,6 +209,8 @@ def create_webdataset(audio_dir, output_dir, schema_path, shard_size_gb=1.0):
                 print(f"Skipping malformed line: {line.strip()}")
                 continue
 
+            # The 4th field is skipped since all files are in the music domain.
+            # TODO(chanwcom) Fix it later to handle other domains as well.
             wav_name, gender, native_flag, _, text, intent_str = parts
             wav_path = os.path.join(audio_dir, wav_name)
             base_key = os.path.splitext(wav_name)[0]
@@ -238,18 +243,7 @@ def create_webdataset(audio_dir, output_dir, schema_path, shard_size_gb=1.0):
                     "json": meta_json_str,
                 }
 
-                est_sample_size = len(audio_bytes) + len(meta_json_str.encode("utf-8")) + len(text.encode("utf-8"))
-
-                if sink is None or current_size + est_sample_size > shard_size_gb * BYTES_PER_GB:
-                    if sink is not None:
-                        sink.close()
-                    shard_path = os.path.join(output_dir, f"shard-{shard_id:06d}.tar")
-                    sink = wds.ShardWriter(shard_path, maxcount=1000)
-                    shard_id += 1
-                    current_size = 0
-
                 sink.write(sample)
-                current_size += est_sample_size
 
             except Exception as err:
                 print(f"Error processing sample {wav_name}: {err}")
@@ -268,6 +262,7 @@ def load_json_schema(schema_path):
     Returns:
         dict: Parsed JSON schema as a Python dictionary.
     """
+
     with open(schema_path, "r", encoding="utf-8") as f:
         return json.load(f)
 
@@ -322,8 +317,8 @@ def main():
                   f"{args.min_shard_count}")
             effective_shard_size_gb = min_shard_gb
 
-
-    create_webdataset(args.audio_dir, args.output_dir, effective_shard_size_gb)
+    create_webdataset(
+        args.audio_dir, args.output_dir, args.schema_file, effective_shard_size_gb)
 
 if __name__ == "__main__":
     main()
