@@ -12,7 +12,7 @@ python ctc_loss_test.py
 Instructions:
 ### 1. Implement the **calculate_log_label_prob** method so that the unit test passes.
 
-Note that the log_label_prob is (\hat{y}_t))_{c_l}.
+Note that the log_label_prob is log ((\hat{y}_t))_{c_l}).
 
 ### 2. Implement the **calculate_alpha_betacalculate_alpha_beta** method so that the unit test passes.
 
