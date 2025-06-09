@@ -53,14 +53,14 @@ We used the music portion of the STOP train set.
 However, we removed 00011525.wav, since the transcript of it seems to contain an error: "play song TITLE_MEDIA on spotify"
 You may download the compressed sharded WebDataset from the following directory:
 
-https://drive.google.com/drive/folders/1FYDpRJzZKxyHfB8M2hjxbZmGZc8K8P-M
+https://drive.google.com/file/d/1myqysY_FkaynOfkORBA5xyw4FRJ_OxuW/view?usp=drive_link
 
 So the total number of utterances is reduced from 11563 to 11562.
 
 Please note that you should decompress tar.gz files only once. We will use 10 sharded *.tar file for training and eval.
 
 For the test set, I randomly chose 300 utterances from `test_0/music_test`. You may download the compressed sharded WebDataset.
-https://drive.google.com/file/d/1FUrwZzeZ8S1su9MPaQVu4WDswM2AjPxG/view?usp=drive_link
+https://drive.google.com/file/d/1j2z8xb4V5zTb6ChJafZZp8Gtt61_ma_1/view?usp=drive_link
 
 As before, you should decompress tar.gz files only once. We will use 10 sharded *.tar file for training and eval.
 
