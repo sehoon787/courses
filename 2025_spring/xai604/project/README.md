@@ -34,6 +34,10 @@ SoundFile installation
 \
 `pip install soundfile`
 
+WebDataset installation:
+\
+`pip install webdataset`
+
 Librosa installtion
 \
 `conda install -c conda-forge librosa`
