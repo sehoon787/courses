@@ -29,42 +29,90 @@ db_top_dir = "/mnt/data/database"
 train_top_dir = os.path.join(db_top_dir, "stop_music/music_train")
 test_top_dir = os.path.join(db_top_dir, "stop_music/music_test0")
 
-def preprocess_sample(sample):
-    waveform, sample_rate = torchaudio.load(io.BytesIO(sample['wav']))
-    input_values = processor.feature_extractor(
-        waveform[0], sampling_rate=sample_rate).input_values[0]
+def preprocess_sample(sample: Dict) -> Dict:
+    """Preprocess a single raw sample from the WebDataset.
 
-    text = sample['txt'].decode('utf-8')
+    This function loads the waveform from the raw bytes using torchaudio,
+    extracts features using the processor's feature extractor, and tokenizes
+    the transcript text.
+
+    Args:
+        sample (Dict): A dictionary containing keys 'wav' (raw audio bytes)
+            and 'txt' (transcript bytes).
+
+    Returns:
+        Dict: A dictionary with keys:
+            - 'input_values': processed audio feature tensor.
+            - 'labels': list of token IDs corresponding to the transcript.
+    """
+    waveform, sample_rate = torchaudio.load(io.BytesIO(sample["wav"]))
+    input_values = processor.feature_extractor(
+        waveform[0], sampling_rate=sample_rate
+    ).input_values[0]
+
+    text = sample["txt"].decode("utf-8")
     labels = processor.tokenizer(text).input_ids
 
     return {"input_values": input_values, "labels": labels}
 
 
-train_dataset = (wds.WebDataset(glob.glob(os.path.join(train_top_dir, "shard-*.tar")))
-            .to_tuple("wav", "txt")
-            .map(lambda sample: { "wav": sample[0], "txt": sample[1] })
-            .map(preprocess_sample))
-test_dataset = (wds.WebDataset(glob.glob(os.path.join(test_top_dir, "shard-*.tar")))
-            .to_tuple("wav", "txt")
-            .map(lambda sample: { "wav": sample[0], "txt": sample[1] })
-            .map(preprocess_sample))
+def make_dataset(data_dir: str) -> wds.WebDataset:
+    """Create a WebDataset pipeline that loads and preprocesses data shards.
+
+    It reads all shards named 'shard-*.tar' in the given directory,
+    extracts 'wav' and 'txt' entries as tuples, converts them into dictionaries,
+    and applies the preprocessing function.
+
+    Args:
+        data_dir (str): Path to the directory containing dataset shards.
+
+    Returns:
+        wds.WebDataset: The prepared dataset pipeline with preprocessing.
+    """
+    dataset = (
+        wds.WebDataset(glob.glob(os.path.join(data_dir, "shard-*.tar")))
+        .to_tuple("wav", "txt")
+        .map(lambda sample: {"wav": sample[0], "txt": sample[1]})
+        .map(preprocess_sample)
+    )
+    return dataset
+
 
 processor = AutoProcessor.from_pretrained("facebook/wav2vec2-base")
 
+train_dataset = make_dataset(train_top_dir)
+test_dataset = make_dataset(test_top_dir)
 
-def compute_metrics(pred):
+
+def compute_metrics(pred) -> Dict[str, float]:
+    """Compute word error rate (WER) between predictions and labels.
+
+    This function decodes the model's predicted token IDs and ground truth
+    label IDs into strings, replacing ignored label tokens with the padding
+    token ID. Then it computes WER using the `evaluate` library.
+
+    Args:
+        pred: A prediction object with attributes:
+            - predictions: logits or probabilities of shape
+                (batch_size, seq_len, vocab_size).
+            - label_ids: ground truth token IDs with padding replaced by -100.
+
+    Returns:
+        Dict[str, float]: Dictionary with WER under the key 'wer'.
+    """
     pred_logits = pred.predictions
     pred_ids = np.argmax(pred_logits, axis=-1)
 
+    # Replace -100 in labels with tokenizer pad token ID to enable decoding
     pred.label_ids[pred.label_ids == -100] = processor.tokenizer.pad_token_id
 
     pred_str = processor.batch_decode(pred_ids)
     label_str = processor.batch_decode(pred.label_ids, group_tokens=False)
 
-    wer = evaluate.load("wer")
-    wer = wer.compute(predictions=pred_str, references=label_str)
+    wer_metric = evaluate.load("wer")
+    wer_score = wer_metric.compute(predictions=pred_str, references=label_str)
 
-    return {"wer": wer}
+    return {"wer": wer_score}
 
 
 @dataclass
