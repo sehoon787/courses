@@ -13,76 +13,75 @@ from transformers import pipeline
 from datasets import load_dataset
 from transformers import AutoProcessor
 from torch.utils import data
-import tensorflow as tf
 import torch
 
 # Custom imports
 from data import speech_data_helper
 
-# Prevents Tensorflow from using the entire GPU memory.
-#
-# Since we use Tensorflow and Pytorch simultaneously, Tensorflow shouldl not
-# occupy the entire memory. Instead of allocating the entire GPU memory, GPU
-# memory allocated to Tensorflow grows based on its need. Refer to the
-# following website for more information:
-# https://www.tensorflow.org/guide/gpu
-gpus = tf.config.list_physical_devices("GPU")
-if gpus:
-  try:
-    # Currently, memory growth needs to be the same across GPUs.
-    for gpu in gpus:
-      tf.config.experimental.set_memory_growth(gpu, True)
-    logical_gpus = tf.config.list_logical_devices("GPU")
-    print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
+db_top_dir = "/mnt/data/database"
+train_top_dir = os.path.join(db_top_dir, "stop_music/music_train")
+test_top_dir = os.path.join(db_top_dir, "stop_music/music_test0")
 
-  except RuntimeError as e:
-    # Memory growth must be set before GPUs have been initialized.
-    print(e)
+def preprocess_sample(sample: Dict) -> Dict:
+    """Preprocess a single raw sample from the WebDataset.
 
-db_top_dir = "/home/chanwcom/databases/"
-train_top_dir = os.path.join(db_top_dir, "stop/music_train_tfrecord")
-test_top_dir = os.path.join(db_top_dir,
-                            "stop/test_0_music_random_300_tfrecord")
+    This function loads the waveform from the raw bytes using torchaudio,
+    extracts features using the processor's feature extractor, and tokenizes
+    the transcript text.
 
-# yapf: disable
-op = speech_data_helper.SpeechDataToWave()
-train_dataset = tf.data.TFRecordDataset(
-    glob.glob(os.path.join(train_top_dir, "*tfrecord-*")),
-              compression_type="GZIP")
-train_dataset = train_dataset.batch(1)
-train_dataset = train_dataset.prefetch(tf.data.experimental.AUTOTUNE)
-train_dataset = train_dataset.map(
-    op.process, num_parallel_calls=tf.data.AUTOTUNE)
-# yapf: enable
+    Args:
+        sample (Dict): A dictionary containing keys 'wav' (raw audio bytes)
+            and 'txt' (transcript bytes).
 
-# yapf: disable
-test_dataset = tf.data.TFRecordDataset(
-    glob.glob(os.path.join(test_top_dir, "*tfrecord-*")),
-              compression_type="GZIP")
-test_dataset = test_dataset.batch(1)
-test_dataset = test_dataset.prefetch(tf.data.experimental.AUTOTUNE)
-test_dataset = test_dataset.map(op.process)
-# yapf: enable
+    Returns:
+        Dict: A dictionary with keys:
+            - 'input_values': processed audio feature tensor.
+            - 'labels': list of token IDs corresponding to the transcript.
+    """
+    waveform, sample_rate = torchaudio.load(io.BytesIO(sample["wav"]))
+    input_values = processor.feature_extractor(
+        waveform[0], sampling_rate=sample_rate
+    ).input_values[0]
+
+    text = sample["txt"].decode("utf-8")
+    labels = processor.tokenizer(text).input_ids
+
+    return {"input_values": input_values, "labels": labels}
+
+
+def make_dataset(data_dir: str) -> wds.WebDataset:
+    """Create a WebDataset pipeline that loads and preprocesses data shards.
+
+    It reads all shards named 'shard-*.tar' in the given directory,
+    extracts 'wav' and 'txt' entries as tuples, converts them into dictionaries,
+    and applies the preprocessing function.
+
+    Args:
+        data_dir (str): Path to the directory containing dataset shards.
+
+    Returns:
+        wds.WebDataset: The prepared dataset pipeline with preprocessing.
+    """
+    dataset = (
+        wds.WebDataset(glob.glob(os.path.join(data_dir, "shard-*.tar")))
+        .to_tuple("wav", "txt")
+        .map(lambda sample: {"wav": sample[0], "txt": sample[1]})
+        .map(preprocess_sample)
+    )
+    return dataset
+
 
 processor = AutoProcessor.from_pretrained("facebook/wav2vec2-base")
 
-class IterDataset(data.IterableDataset):
-    def __init__(self, tf_dataset):
-        self._dataset = tf_dataset
 
-    def __iter__(self):
-        for data in self._dataset:
-            output = {}
-            output["input_values"] = [tf.squeeze(data[0]["SEQ_DATA"]).numpy()]
-            output["input_length"] = tf.squeeze(data[0]["SEQ_LEN"]).numpy()
-            output["labels"] = (
-                data[1]["SEQ_DATA"][0].numpy().decode("unicode_escape"))
-
-            yield (output)
+test_dataset = make_dataset(test_top_dir)
 
 
-pytorch_train_dataset = IterDataset(train_dataset)
-pytorch_test_dataset = IterDataset(test_dataset)
+
+
+
+
+
 
 transcriber = pipeline(
     "automatic-speech-recognition",
@@ -90,7 +89,7 @@ transcriber = pipeline(
     "/home/chanwcom/local_repositories/cognitive_workflow_kit/tool/models/asr_stop_model_final/checkpoint-5000"
 )
 
-for data in pytorch_test_dataset:
+for data in test_dataset:
     ref = data["labels"]
     hyp = transcriber(data["input_values"])
     print(f"REF: {ref}")
