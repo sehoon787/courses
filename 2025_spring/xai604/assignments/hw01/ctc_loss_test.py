@@ -91,7 +91,7 @@ class SeqLossUtilTest(unittest.TestCase):
 
         # Computes transition allowance matrix
         actual = ctc_loss_lib.label_trans_allowance_table(
-            labels, labels_len, ctc_loss_lib.LabelType.CTC)
+            labels, labels_len)
 
         expected = torch.tensor(
             [[[  0.0,   0.0, LOG_0, LOG_0, LOG_0, LOG_0, LOG_0],
@@ -270,6 +270,8 @@ class SeqLossUtilTest(unittest.TestCase):
         expected_log_seq_prob_final = torch.tensor([-5.3125, -4.9338, -4.7480])
 
         # Checks alpha matrix closeness (and optionally beta/log_seq_prob_final)
+
+        import pdb; pdb.set_trace()
 
         torch.testing.assert_close(alpha, expected_alpha, atol=1e-4, rtol=1e-4)
         torch.testing.assert_close(beta, expected_beta, atol=1e-4, rtol=1e-4)
