@@ -61,7 +61,7 @@ def make_dataset(data_dir: str) -> wds.WebDataset:
     dataset = (
         wds.WebDataset(glob.glob(os.path.join(data_dir, "shard-*.tar")))
         .to_tuple("wav", "txt")
-        .map(lambda sample: {"wav": sample[0], "txt": sample[1]})
+        .map(lambda sample: {"wav": sample[0], "txt": sample[1].upper()})
         .map(preprocess_sample)
     )
     return dataset
