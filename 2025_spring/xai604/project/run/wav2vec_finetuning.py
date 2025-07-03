@@ -23,6 +23,7 @@ db_top_dir = "/mnt/data/database"
 train_top_dir = os.path.join(db_top_dir, "stop_music/music_train")
 test_top_dir = os.path.join(db_top_dir, "stop_music/music_test0")
 processor = AutoProcessor.from_pretrained("facebook/wav2vec2-base")
+output_dir = "/mnt/data/home/chanwcom/experiment/wav2vec2_stop_model_final"
 
 train_dataset = sample_util.make_dataset(train_top_dir)
 test_dataset = sample_util.make_dataset(test_top_dir)
@@ -143,8 +144,7 @@ model = AutoModelForCTC.from_pretrained(
 # These control training hyperparameters and runtime behavior:
 training_args = TrainingArguments(
     # Directory to save model checkpoints and outputs.
-    output_dir="/home/chanwcom/local_repositories/cognitive_workflow_kit/tool/"
-               "models/asr_stop_model_final",
+    output_dir=output_dir,
 
     # Batch size per device (GPU/CPU) for training.
     per_device_train_batch_size=40,

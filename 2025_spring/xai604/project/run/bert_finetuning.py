@@ -24,35 +24,31 @@ model_name = "google-bert/bert-base-uncased"
 db_top_dir = "/mnt/data/database"
 train_top_dir = os.path.join(db_top_dir, "stop_music/music_train")
 test_top_dir = os.path.join(db_top_dir, "stop_music/music_test0")
+output_dir = "/mnt/data/home/chanwcom/experiment/bert_stop_model_final"
 
-def find_index(inputs):
-    intents = [
-        "ADD_TO_PLAYLIST_MUSIC",
-        "CREATE_PLAYLIST_MUSIC",
-        "DISLIKE_MUSIC",
-        "LIKE_MUSIC",
-        "LOOP_MUSIC",
-        "PAUSE_MUSIC",
-        "PLAY_MUSIC",
-        "PREVIOUS_TRACK_MUSIC",
-        "REMOVE_FROM_PLAYLIST_MUSIC",
-        "REPLAY_MUSIC",
-        "SKIP_TRACK_MUSIC",
-        "START_SHUFFLE_MUSIC",
-        "STOP_MUSIC",
-        "UNSUPPORTED_MUSIC",
-        "SET_DEFAULT_PROVIDER_MUSIC",
-    ]
+INTENTS = [
+    "ADD_TO_PLAYLIST_MUSIC",
+    "CREATE_PLAYLIST_MUSIC",
+    "DISLIKE_MUSIC",
+    "LIKE_MUSIC",
+    "LOOP_MUSIC",
+    "PAUSE_MUSIC",
+    "PLAY_MUSIC",
+    "PREVIOUS_TRACK_MUSIC",
+    "REMOVE_FROM_PLAYLIST_MUSIC",
+    "REPLAY_MUSIC",
+    "SKIP_TRACK_MUSIC",
+    "START_SHUFFLE_MUSIC",
+    "STOP_MUSIC",
+    "UNSUPPORTED_MUSIC",
+    "SET_DEFAULT_PROVIDER_MUSIC",
+]
 
-    index = -1
-    for (i, intent) in enumerate(intents):
-        if intent == inputs:
-            index = i
-            break
+INTENT2IDX = {intent: idx for idx, intent in enumerate(INTENTS)}
 
-    assert index >= 0 assert index >= 0
-
-    return index
+def find_index(intent: str) -> int:
+    assert intent in INTENT2IDX, f"Unknown intent: {intent}"
+    return INTENT2IDX[intent]
 
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -88,13 +84,12 @@ def compute_metrics(eval_pred):
 
 training_args = TrainingArguments(
     # Directory to save model checkpoints and outputs.
-    output_dir="/home/chanwcom/local_repositories/cognitive_workflow_kit/tool/"
-               "models/bert_stop_model_final",
+    output_dir=output_dir,
     per_device_train_batch_size=40,
     gradient_accumulation_steps=2,
     learning_rate=1e-4,
-    warmup_steps=500,
-    max_steps=1000,
+    warmup_steps=200,
+    max_steps=400,
     gradient_checkpointing=True,
     fp16=True,
     eval_strategy="steps",
