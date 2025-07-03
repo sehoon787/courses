@@ -13,10 +13,14 @@ from transformers import pipeline
 # Local application imports
 import sample_util
 
-# Defines the path to the root directory containing the dataset
+# Defines the path to the root directory containing the dataset.
 db_top_dir = "/mnt/data/database"
 
-# Defines the path to the test dataset
+# Defines the model name.
+model_name = ("/mnt/data/home/chanwcom/experiment/wav2vec2_stop_model_final/"
+              "checkpoint-2000")
+
+# Defines the path to the test dataset.
 test_top_dir = os.path.join(db_top_dir, "stop_music/music_test0")
 
 # Load the test dataset using a custom utility function.
@@ -27,10 +31,7 @@ test_dataset = sample_util.make_dataset(test_top_dir, do_tokenize=False)
 # This loads a model for automatic speech recognition (ASR).
 transcriber = pipeline(
     "automatic-speech-recognition",
-    model=(
-        "/home/chanwcom/local_repositories/cognitive_workflow_kit/tool/models/"
-        "asr_stop_model_final/checkpoint-2000"
-    )
+    model=model_name
 )
 
 # Iterate through each sample in the dataset and decode the audio
